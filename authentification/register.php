@@ -38,13 +38,13 @@ if (!$connection) {
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les valeurs du formulaire
-    $lastname = $_POST["lastName"];
-    $name = $_POST["name"];
-    $mail = $_POST["mail"];
-    $username = $_POST["username"];
-    $publicName = $_POST["publicName"];
-    $password = $_POST["password"];
-    $confirm_password = $_POST["confirm_password"];
+    $lastname = htmlspecialchars($_POST["lastName"]);
+    $name = htmlspecialchars($_POST["name"]);
+    $mail = htmlspecialchars($_POST["mail"]);
+    $username = htmlspecialchars($_POST["username"]);
+    $publicName = htmlspecialchars($_POST["publicName"]);
+    $password = htmlspecialchars($_POST["password"]);
+    $confirm_password = htmlspecialchars($_POST["confirm_password"]);
  
     // Vérifie si les mots de passe correspondent
     if ($password === $confirm_password) {
