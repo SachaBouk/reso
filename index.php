@@ -8,10 +8,19 @@
     <title>Accueil</title>
 </head>
 <body>
+
     <a href="?pages=login">Login</a>
     <a href="?pages=profile">Profile</a>
     <a href="?pages=logout">Logout</a>
-    <?php
+    <?php    
+    session_start();
+        
+    if (isset($_SESSION['users'])) {
+        echo $_SESSION['users'];
+    } else {
+        echo 'Invalide';
+    }
+
     if(isset ($_GET['pages'])) {
         if ($_GET['pages'] == "profile") {
             include ("contacts/".$_GET['pages'].'.php');
@@ -23,6 +32,7 @@
     else {
         echo "<h1>Accueil</h1>";
     }
-        ?>
+    ?>
+
 </body>
 </html>
