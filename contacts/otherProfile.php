@@ -16,3 +16,25 @@ if ($user = mysqli_fetch_assoc($request)) {
     echo "<br> Cet utilisateur n'existe pas !";
 }
 echo $_GET["user"];
+
+
+?>
+
+<form action="" method="POST">
+    <input type="hidden" name="followed_id" value="<?= htmlspecialchars($profile_id) ?>">
+    <input type="submit" id="submit" name="submit" value="Suivre">
+</form> 
+
+<?php 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    // Récupérer l'ID de l'utilisateur suivi
+    $followed_id = $_POST['followedUser_id'];
+    
+    // Afficher l'ID pour vérification
+    echo "Vous venez de suivre l'utilisateur avec l'ID: " . htmlspecialchars($followed_id);
+}
+?>
+
+
+
