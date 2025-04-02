@@ -29,7 +29,7 @@
 </div>
 </div>
 <?php
-$connection = mysqli_connect("localhost", "root", "lecacaestcuit", "reso");
+$connection = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
  
 if (!$connection) {
     die("Connexion impossible : " . mysqli_connect_error());
