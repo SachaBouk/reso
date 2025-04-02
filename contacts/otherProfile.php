@@ -28,7 +28,7 @@ echo $_GET["user"];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     // Récupérer l'ID de l'utilisateur suivi
-    $followed_id = $_POST['followedUser_id'];
+    $followed_id = $_GET['user'];
     
     // Afficher l'ID pour vérification
     echo "Vous venez de suivre l'utilisateur avec l'ID: " . htmlspecialchars($followed_id);
