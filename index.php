@@ -22,12 +22,6 @@
         <?php
         session_start();
 
-        if (isset($_SESSION['users'])) {
-            echo $_SESSION['users'];
-        } else {
-            echo 'Invalide';
-        }
-
         if (isset($_GET['pages'])) {
             $allowedPages = ['profile', 'login', 'logout', 'register'];
             $page = $_GET['pages'];

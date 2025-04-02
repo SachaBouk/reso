@@ -1,4 +1,10 @@
 <?php
+if (isset($_SESSION['users'])) {
+    echo $_SESSION['users'];
+} else {
+    echo "Vous n'êtes pas connecter.";
+}
+
 $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
 if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
