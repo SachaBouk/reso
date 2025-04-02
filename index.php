@@ -12,7 +12,7 @@
 
 <body>
     <div id="barreLateral">
-        <img src="../reso/images/X.png" alt="X" id="logo">
+        <img src="./images/X.png" alt="X" id="logo">
     </div>
     <main>
         <a href="?pages=login">Login</a>
