@@ -1,6 +1,5 @@
 <?php
 session_start();
-require 'config.php'; // Connexion BDD
 require 'functions.php'; // Fonctions follows
 
 if (!isset($_SESSION['users'])) {
