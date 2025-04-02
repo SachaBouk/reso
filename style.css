@@ -13,17 +13,24 @@ body {
     display: flex;
 }
 
+.message {
+    width: 100%;
+    margin: 0 15px;
+    background-color: #000;
+    color: #fff;
+}
+
 #barreLateral {
     width: 20%;
-    background-color: black;
+    background-color: #000;
     border-right: 1px solid #676262;
-    color: white;
+    color: #fff;
 }
 
 main {
     flex: 1;
     padding: 20px;
-    background-color: white;
+    background-color: #fff;
 }
 
 .post-form {
@@ -44,7 +51,7 @@ main {
     margin-top: 10px;
     padding: 10px 20px;
     background-color: #ff5733;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
