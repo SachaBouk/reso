@@ -48,8 +48,10 @@
                 $request = mysqli_query($connexion, "SELECT * FROM post");
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<div class='message'>";
-                        echo "<br>" . $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
-                        echo "<br><a href='?pages=post&post={$posts["post_id"]}'>Show more</a>";
+                        echo $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
+                        echo "<br>";
+                        echo "<a href='?pages=post&post={$posts["post_id"]}'>Show more</a>";
+                        echo "<br>";
                         if ($_SESSION['users'] == $posts['user_id']) {
                             echo "<form action='index.php' method='POST' style='display:inline;'>
                                     <input type='hidden' name='post_id' value='{$posts["post_id"]}'>
