@@ -23,7 +23,7 @@ echo $_GET["user"];
 session_start(); // Doit être au tout début du fichier
 
 // Vérification plus robuste de la connexion
-$isLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
+$isLoggedIn = isset($_SESSION['user']) && !empty($_SESSION['user']);
 
 // Debug: Afficher l'état de connexion (à enlever en production)
 echo "<pre>Session: "; print_r($_SESSION); echo "</pre>";
