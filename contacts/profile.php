@@ -9,16 +9,19 @@ echo "<a href='?pages=follower'>followers</a>";
 echo "<a href='?pages=follow'>follows</a>";
 
 $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
-if (!$connexion) {
-    die("Connection failed: " . mysqli_connect_error());
-}else{
-    $request = mysqli_query($connexion, "SELECT * FROM users");
-    while ($users = mysqli_fetch_assoc($request)) {
-        $user = $users["user_id"];
-        echo "<br>".$users["publicName"];
-        echo "<br>".$users["username"];
-        echo "<br>".$users["creationDate"];
-        echo "<br>".$users["followers"]." ".$users["following"];
-    }
+$user_email = mysqli_real_escape_string($connexion, $_SESSION['users']);
+
+// SQL query to fetch the user data
+$query = "SELECT * FROM users WHERE mail = '$user_email'";
+$request = mysqli_query($connexion, $query);
+
+if ($user = mysqli_fetch_assoc($request)) {
+    echo "<br>Nom Public: " . htmlspecialchars($user["publicName"]);
+    echo "<br>Nom d'utilisateur: " . htmlspecialchars($user["username"]);
+    echo "<br>Date de création: " . htmlspecialchars($user["creationDate"]);
+    echo "<br>Followers: " . htmlspecialchars($user["followers"]);
+    echo "<br>Following: " . htmlspecialchars($user["following"]);
+} else {
+    echo "Utilisateur non trouvé.";
 }
 ?>
