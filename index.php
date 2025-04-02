@@ -15,6 +15,7 @@
         <img src="./images/X.png" alt="X" id="logo">
     </div>
     <main>
+        <a href="index.php">Accueil</a>
         <a href="?pages=login">Login</a>
         <a href="?pages=profile">Profile</a>
         <a href="?pages=logout">Logout</a>
