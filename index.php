@@ -8,10 +8,21 @@
     <title>Accueil</title>
 </head>
 <body>
-    <a href="authentification/register.php">Register</a>
-    <a href="authentification/login.php">Login</a>
-    <a href="contacts/profile.php">Profile</a>
-    <a href="messages/post.php">Post test</a>
-    <a href="authentification/logout.php">Logout</a>
+    <a href="?pages=login">Login</a>
+    <a href="?pages=profile">Profile</a>
+    <a href="?pages=logout">Logout</a>
+    <?php
+    if(isset ($_GET['pages'])) {
+        if ($_GET['pages'] == "profile") {
+            include ("contacts/".$_GET['pages'].'.php');
+        }
+        if ($_GET['pages'] == "logout" || $_GET['pages'] == "login") {
+            include ("authentification/".$_GET['pages'].'.php');
+        }
+    }
+    else {
+        echo "<h1>Accueil</h1>";
+    }
+        ?>
 </body>
 </html>
