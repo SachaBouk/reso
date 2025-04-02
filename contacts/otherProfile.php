@@ -1,4 +1,5 @@
 <?php
+session_start();
 $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
 $user_id = $_GET["user"];
 
@@ -16,24 +17,33 @@ if ($user = mysqli_fetch_assoc($request)) {
 }
 echo $_GET["user"];
 
+$isLoggedIn = isset($_SESSION['user']) && !empty($_SESSION['user']);
+
+echo "<pre>Session: "; print_r($_SESSION); echo "</pre>";
+echo "État connexion: " . ($isLoggedIn ? 'Connecté' : 'Non connecté');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    if (!$isLoggedIn) {
+        echo "<div class='error'>Vous devez être connecté pour suivre un utilisateur</div>";
+    } else {
+        $followed_id = $_POST['followed_id'];
+        
+        if (!empty($followed_id) && is_numeric($followed_id)) {
+            echo "Suivi réussi! ID: " . htmlspecialchars($followed_id);
+            
+            followUser($_SESSION['user_id'], $followed_id);
+            
+        } else {
+            echo "<div class='error'>ID invalide</div>";
+        }
+    }
+}
 
 ?>
 
 <form action="" method="POST">
-    <input type="hidden" name="followed_id" value="<?= htmlspecialchars($profile_id) ?>">
-    <input type="submit" id="submit" name="submit" value="Suivre">
-</form> 
-
-<?php 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    // Récupérer l'ID de l'utilisateur suivi
-    $followed_id = $_GET['user'];
-    
-    // Afficher l'ID pour vérification
-    echo "Vous venez de suivre l'utilisateur avec l'ID: " . htmlspecialchars($followed_id);
-}
-?>
-
+    <input type="hidden" name="followed_id" value="<?= htmlspecialchars($profile_id ?? '') ?>">
+    <input type="submit" name="submit" value="Suivre">
+</form>
 
 

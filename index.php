@@ -24,7 +24,7 @@
         session_start();
 
         if (isset($_GET['pages'])) {
-            $allowedPages = ['profile', 'login', 'logout', 'register', 'follower', 'follow', 'otherProfile'];
+            $allowedPages = ['profile', 'login', 'logout', 'register', 'follower', 'follow', 'otherProfile', 'post'];
             $page = $_GET['pages'];
 
             if (in_array($page, $allowedPages)) {
@@ -33,6 +33,9 @@
                 }
                 if ($page === "login" || $page === "logout" || $page === "register") {
                     include("authentification/" . $page . '.php');
+                }
+                if ($page === "post") {
+                    include("messages/" . $page . '.php');
                 }
             } else {
                 echo "<h1>Page non autorisée</h1>";
@@ -52,6 +55,7 @@
                                 <input type='submit' value='Supprimer'>
                               </form>";
                     }
+                    echo "<br>";
                 }
             }
         }
