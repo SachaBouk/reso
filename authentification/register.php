@@ -70,5 +70,26 @@ mysqli_close($connection);
 ?>
 
 
+<style>
+
+.Content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+
+
+</style>
+
 
 
