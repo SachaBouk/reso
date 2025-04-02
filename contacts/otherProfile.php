@@ -1,4 +1,3 @@
-test
 <?php
 $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
 $user_id = $_GET["user"];
