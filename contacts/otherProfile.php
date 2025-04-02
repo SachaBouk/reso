@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         
         if ($followed_id > 0 && $follower_id != $followed_id) {
             // Vérifier si le suivi existe déjà
-            $check_query = "SELECT * FROM follow WHERE followedUser_id = ? AND followedUser_id = ?";
+            $check_query = "SELECT * FROM follow WHERE followerUser_id = $follower_id  AND followedUser_id = $user_id";
             $check_stmt = mysqli_prepare($connexion, $check_query);
             mysqli_stmt_bind_param($check_stmt, "ii", $follower_id, $followed_id);
             mysqli_stmt_execute($check_stmt);
