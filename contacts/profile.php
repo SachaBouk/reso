@@ -20,6 +20,7 @@ if ($user = mysqli_fetch_assoc($request)) {
     echo "<br>Date de création: " . htmlspecialchars($user["creationDate"]);
     echo "<br>Followers: " . htmlspecialchars($user["followers"]);
     echo "<br>Following: " . htmlspecialchars($user["following"]);
+
 } else {
     echo "<br>Veuillez vous connecter pour accéder à votre compte.";
 }
