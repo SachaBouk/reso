@@ -19,21 +19,38 @@ echo $_GET["user"];
 
 ?>
 
+<?php
+session_start(); // Ne pas oublier de démarrer la session
+
+// Vérifier si l'utilisateur est connecté
+$isLoggedIn = isset($_SESSION['user_id']);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    if (!$isLoggedIn) {
+        // Afficher une erreur si non connecté
+        echo "<div class='error'>Vous devez être connecté pour suivre un utilisateur</div>";
+    } else {
+        // Récupérer l'ID de l'utilisateur suivi (depuis POST, pas GET)
+        $followed_id = $_POST['user'];
+        
+        // Valider l'ID (optionnel mais recommandé)
+        if (!empty($followed_id) && is_numeric($followed_id)) {
+            // Afficher l'ID pour vérification
+            echo "Vous venez de suivre l'utilisateur avec l'ID: " . htmlspecialchars($followed_id);
+            
+            // Ici vous pourriez appeler une fonction pour enregistrer le follow
+            // followUser($_SESSION['user_id'], $followed_id);
+        } else {
+            echo "<div class='error'>ID d'utilisateur invalide</div>";
+        }
+    }
+}
+?>
+
 <form action="" method="POST">
     <input type="hidden" name="followed_id" value="<?= htmlspecialchars($profile_id) ?>">
     <input type="submit" id="submit" name="submit" value="Suivre">
-</form> 
-
-<?php 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    // Récupérer l'ID de l'utilisateur suivi
-    $followed_id = $_GET['user'];
-    
-    // Afficher l'ID pour vérification
-    echo "Vous venez de suivre l'utilisateur avec l'ID: " . htmlspecialchars($followed_id);
-}
-?>
+</form>
 
 
 
