@@ -16,12 +16,19 @@
     </div>
     <main>
         <a href="index.php">Accueil</a>
-         |
+        |
         <a href="?pages=login">Login</a>
-         |
+        |
         <a href="?pages=profile">Profile</a>
-         |
+        |
         <a href="?pages=logout">Logout</a>
+
+        <form action="" method="POST">
+            <input type="hidden" name="publication" value="1">
+            <input type="text" id="content" name="content" placeholder="Que se pastis ?" required>
+            <input type="submit" value="Publier">
+        </form>
+
         <?php
         session_start();
 
@@ -50,27 +57,22 @@
                 $request = mysqli_query($connexion, "SELECT * FROM post");
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<div class='message'>";
-                        echo $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
-                        echo "<br>";
-                        echo "<a href='?pages=post&post={$posts["post_id"]}'>Show more</a>";
-                        echo "<br>";
-                        if ($_SESSION['users'] == $posts['user_id']) {
-                            echo "<form action='index.php' method='POST' style='display:inline;'>
+                    echo $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
+                    echo "<br>";
+                    echo "<a href='?pages=post&post={$posts["post_id"]}'>Show more</a>";
+                    echo "<br>";
+                    if ($_SESSION['users'] == $posts['user_id']) {
+                        echo "<form action='index.php' method='POST' style='display:inline;'>
                                     <input type='hidden' name='post_id' value='{$posts["post_id"]}'>
                                     <input type='submit' value='Supprimer'>
                                 </form>";
-                        }
+                    }
                     echo "</div>";
                 }
             }
         }
         ?>
     </main>
-    <form action="" method="POST">
-        <input type="hidden" name="publication" value="1">
-        <input type="text" id="content" name="content" placeholder="Que se pastis ?" required>
-        <input type="submit" value="Publier">
-    </form>
     <?php
     $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
