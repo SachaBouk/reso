@@ -3,20 +3,20 @@
 <h2>Créer un compte</h2>
  
 <form action="" method="POST">
-    <label for="nom">lastname :</label>
-    <input type="text" id="nom" name="nom" required>
+    <label for="lastName">lastname :</label>
+    <input type="text" id="lastName" name="nom" required>
     <br>
-    <label for="prenom">name :</label>
-    <input type="text" id="prenom" name="prenom" required>
+    <label for="name">name :</label>
+    <input type="text" id="name" name="prenom" required>
     <br>
-    <label for="email">mail :</label>
-    <input type="email" id="email" name="email" required>
+    <label for="mail">mail :</label>
+    <input type="email" id="mail" name="email" required>
     <br>
-    <label for="prenom">username :</label>
-    <input type="text" id="prenom" name="prenom" required>
+    <label for="username">username :</label>
+    <input type="text" id="username" name="prenom" required>
     <br>
-    <label for="prenom">publicName :</label>
-    <input type="text" id="prenom" name="prenom" required>
+    <label for="publicName">publicName :</label>
+    <input type="text" id="publicName" name="prenom" required>
     <br>
     <label for="password">password :</label>
     <input type="password" id="password" name="password" required>
@@ -38,13 +38,13 @@ if (!$connection) {
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les valeurs du formulaire
-    $lastname = $_POST["lastname"];
-    $name = $_POST["name"];
-    $mail = $_POST["mail"];
-    $username = $_POST["username"];
-    $publicName = $_POST["publicName"];
-    $password = $_POST["password"];
-    $confirm_password = $_POST["confirm_password"];
+    $lastname = htmlspecialchars($_POST["lastName"]);
+    $name = htmlspecialchars($_POST["name"]);
+    $mail = htmlspecialchars($_POST["mail"]);
+    $username = htmlspecialchars($_POST["username"]);
+    $publicName = htmlspecialchars($_POST["publicName"]);
+    $password = htmlspecialchars($_POST["password"]);
+    $confirm_password = htmlspecialchars($_POST["confirm_password"]);
  
     // Vérifie si les mots de passe correspondent
     if ($password === $confirm_password) {
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<a href="?pages=login"><button>Se connecter</button></a>';
         } else {
             // inserre les données
-            $query = "INSERT INTO users (lastname, name, mail, username, publicName, password) VALUES ('$lastname', '$name', '$mail', '$username', '$publicName', '$password')";
+            $query = "INSERT INTO users (lastName, name, mail, username, publicName, password) VALUES ('$lastname', '$name', '$mail', '$username', '$publicName', '$password')";
  
             if (mysqli_query($connection, $query)) {
                 echo "Compte créé avec succès !";
