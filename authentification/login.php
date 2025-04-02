@@ -1,0 +1,1 @@
+<a href="?pages=register">register</a>
