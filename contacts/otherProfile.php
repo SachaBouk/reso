@@ -19,7 +19,10 @@ $result = mysqli_stmt_get_result($stmt);
 
 if ($user = mysqli_fetch_assoc($result)) {
     echo "<br>Nom Public: " . htmlspecialchars($user["publicName"]);
-    // ... autres infos ...
+    echo "<br>Nom d'utilisateur: " . htmlspecialchars($user["username"]);
+    echo "<br>Date de création: " . htmlspecialchars($user["creationDate"]);
+    echo "<br>Followers: " . htmlspecialchars($user["followers"]);
+    echo "<br>Following: " . htmlspecialchars($user["following"]);
 } else {
     echo "<br>Utilisateur introuvable";
 }
