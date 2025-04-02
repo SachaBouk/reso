@@ -29,7 +29,7 @@ echo "<br>ID dans l'URL: " . htmlspecialchars($user_id);
 $isLoggedIn = isset($_SESSION['users']) && !empty($_SESSION['users']);
 
 echo "<pre>Session: "; print_r($_SESSION); echo "</pre>";
-echo "<br>État connexion: " . ($isLoggedIn ? 'Connecté (ID: '.$_SESSION['user_id'].')' : 'Non connecté');
+echo "<br>État connexion: " . ($isLoggedIn ? 'Connecté (ID: '.$_SESSION['users'].')' : 'Non connecté');
 
 // Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
