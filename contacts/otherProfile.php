@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 echo "<div class='error'>Vous suivez déjà cet utilisateur</div>";
             } else {
                 // Insérer le nouveau suivi
-                $insert_query = "INSERT INTO follow (followedUser_id, followedUser_id, follow_date) VALUES (?, ?, NOW())";
+                $insert_query = "INSERT INTO follow (followerUser_id, followedUser_id, follow_date) VALUES (?, ?, NOW())";
                 $insert_stmt = mysqli_prepare($connexion, $insert_query);
                 mysqli_stmt_bind_param($insert_stmt, "ii", $follower_id, $followed_id);
                 
