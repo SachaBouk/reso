@@ -45,6 +45,13 @@
                 $request = mysqli_query($connexion, "SELECT * FROM post");
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<br>" . $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
+                    echo "<br><a href='?pages=post&post={$posts["post_id"]}'>Show more</a>";
+                    if ($_SESSION['users'] == $posts['user_id']) {
+                        echo "<form action='index.php' method='POST' style='display:inline;'>
+                                <input type='hidden' name='post_id' value='{$posts["post_id"]}'>
+                                <input type='submit' value='Supprimer'>
+                              </form>";
+                    }
                 }
             }
         }
@@ -56,14 +63,18 @@
         <input type="submit" value="Publier">
     </form>
     <?php
+    $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['publication'])) {
             $content = $_POST['content'];
             $user_id = $_SESSION['users'];
             $postDate = date("Y-m-d H:i");
 
-            $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
             $result = mysqli_query($connexion, "INSERT INTO post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
+        } elseif (isset($_POST['post_id'])) {
+            $post_id = $_POST['post_id'];
+
+            $result = mysqli_query($connexion, "DELETE FROM post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
         }
     }
     ?>
