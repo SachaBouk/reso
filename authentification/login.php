@@ -15,8 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $request = mysqli_query($connection, "SELECT * FROM users WHERE mail = '$email'");
     if (mysqli_num_rows($request) > 0) {
-        $_SESSION['users'] = $email;
-        header('Location: ?');
+        $user = mysqli_fetch_assoc($request);
+        if ($password === $user['password']) {
+            $_SESSION['users'] = $email;
+            header('Location: ?');
+        } else {
+            echo "<p>Mot de passe invalide</p>";
+        }
+    } else {
+        echo "<p>E-mail invalide</p>";
     }
 }
 ?>
