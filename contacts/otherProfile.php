@@ -1,7 +1,8 @@
+test
 <?php
 $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
 $user_id = $_GET["user"];
-
+echo $user_id;
 $query = "SELECT * FROM users WHERE user_id = '$user_id'";
 $request = mysqli_query($connexion, $query);
 
