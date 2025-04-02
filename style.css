@@ -13,17 +13,17 @@ body {
     display: flex;
 }
 
-a {
-    color: #fff;
-    text-decoration: underline;
-}
-
 .message {
     width: 100%;
     margin: 15px 0;
     padding: 5px;
     background-color: #000;
     color: #fff;
+}
+
+.message a {
+    color: #fff;
+    text-decoration: underline;
 }
 
 #barreLateral {
