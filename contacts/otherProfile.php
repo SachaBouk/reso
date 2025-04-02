@@ -1,5 +1,4 @@
 <?php
-session_start();
 $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
 
 // Vérification de la connexion à la base de données
