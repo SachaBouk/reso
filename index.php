@@ -24,11 +24,11 @@
         session_start();
 
         if (isset($_GET['pages'])) {
-            $allowedPages = ['profile', 'login', 'logout', 'register', 'follower', 'follow'];
+            $allowedPages = ['profile', 'login', 'logout', 'register', 'follower', 'follow', 'otherProfile'];
             $page = $_GET['pages'];
 
             if (in_array($page, $allowedPages)) {
-                if ($page === "profile" || $page === "follower" || $page === "follow") {
+                if ($page === "profile" || $page === "follower" || $page === "follow" || $page === "otherProfile") {
                     include("contacts/" . $page . '.php');
                 } if ($page === "login" || $page === "logout" || $page === "register") {
                     include("authentification/" . $page . '.php');
@@ -43,7 +43,7 @@
             }else{
                 $request = mysqli_query($connexion, "SELECT * FROM post");
                 while ($posts = mysqli_fetch_assoc($request)) {
-                    echo "<br>".$posts["content"]." By : ".$posts["user_id"]."<br>".$posts["date"];
+                    echo "<br>".$posts["content"]." By : <a href='#'>".$posts["user_id"]."</a>"."<br>".$posts["date"];
                 }
             }
         }
@@ -53,6 +53,16 @@
         <input type="text" id="content" name="content" placeholder="Que se pastis ?" required>
         <input type="submit" value="Publier">
     </form>
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $content = $_POST['content'];
+        $user_id = $_SESSION['users'];
+        $postDate = date("Y-m-d H:i");
+
+        $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
+        $result = mysqli_query($connexion, "INSERT INTO post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
+    }
+?>
 </body>
 
 </html>
