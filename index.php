@@ -30,20 +30,21 @@
             if (in_array($page, $allowedPages)) {
                 if ($page === "profile" || $page === "follower" || $page === "follow" || $page === "otherProfile") {
                     include("contacts/" . $page . '.php');
-                } if ($page === "login" || $page === "logout" || $page === "register") {
+                }
+                if ($page === "login" || $page === "logout" || $page === "register") {
                     include("authentification/" . $page . '.php');
                 }
             } else {
                 echo "<h1>Page non autorisée</h1>";
             }
         } else {
-            $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
+            $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
             if (!$connexion) {
                 die("Connection failed: " . mysqli_connect_error());
-            }else{
+            } else {
                 $request = mysqli_query($connexion, "SELECT * FROM post");
                 while ($posts = mysqli_fetch_assoc($request)) {
-                    echo "<br>".$posts["content"]." By : <a href='#'>".$posts["user_id"]."</a>"."<br>".$posts["date"];
+                    echo "<br>" . $posts["content"] . " By : <a href='#'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
                 }
             }
         }
@@ -54,18 +55,18 @@
         <input type="text" id="content" name="content" placeholder="Que se pastis ?" required>
         <input type="submit" value="Publier">
     </form>
-<?php
+    <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['publication'])) {
             $content = $_POST['content'];
             $user_id = $_SESSION['users'];
             $postDate = date("Y-m-d H:i");
 
-            $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
+            $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
             $result = mysqli_query($connexion, "INSERT INTO post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
         }
     }
-?>
+    ?>
 </body>
 
 </html>
