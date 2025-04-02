@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $publicName = htmlspecialchars($_POST["publicName"]);
     $password = htmlspecialchars($_POST["password"]);
     $confirm_password = htmlspecialchars($_POST["confirm_password"]);
+    $creationDate = date("Y-m-d");
  
     // Vérifie si les mots de passe correspondent
     if ($password === $confirm_password) {
@@ -58,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<a href="?pages=login"><button>Se connecter</button></a>';
         } else {
             // inserre les données
-            $query = "INSERT INTO users (mail, name, lastName, username, publicName, password) VALUES ('$mail', '$name', '$lastname', '$username', '$publicName', '$password')";
+            $query = "INSERT INTO users (mail, name, lastName, username, publicName, password, creationDate) VALUES ('$mail', '$name', '$lastname', '$username', '$publicName', '$password', '$creationDate')";
  
             if (mysqli_query($connection, $query)) {
                 echo "Compte créé avec succès !";
