@@ -18,15 +18,16 @@
         <a href="?pages=login">Login</a>
         <a href="?pages=profile">Profile</a>
         <a href="?pages=logout">Logout</a>
+        <a href="?pages=register">register</a>
         <?php
         if (isset($_GET['pages'])) {
-            $allowedPages = ['profile', 'login', 'logout'];
+            $allowedPages = ['profile', 'login', 'logout', 'register'];
             $page = $_GET['pages'];
 
             if (in_array($page, $allowedPages)) {
                 if ($page === "profile") {
                     include("contacts/" . $page . '.php');
-                } elseif ($page === "login" || $page === "logout") {
+                } elseif ($page === "login" || $page === "logout" || $page === "register") {
                     include("authentification/" . $page . '.php');
                 }
             } else {
