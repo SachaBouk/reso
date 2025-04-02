@@ -1,23 +1,23 @@
 <?php
-session_start(); // Ne pas oublier cette ligne au tout début
-$connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
+session_start();
 
-// Vérification connexion DB
+// Connexion à la base de données
+$connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
 if (!$connexion) {
     die("Erreur de connexion: " . mysqli_connect_error());
 }
 
-// Récupération ID utilisateur
-$profile_id = isset($_GET["user"]) ? intval($_GET["user"]) : 0;
+// Récupération de l'ID du profil visité
+$profile_id = isset($_GET['user']) ? intval($_GET['user']) : 0;
 
-// Requête utilisateur
-$query = "SELECT * FROM users WHERE user_id = ?";
-$stmt = mysqli_prepare($connexion, $query);
-mysqli_stmt_bind_param($stmt, "i", $profile_id);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+// Requête pour obtenir les infos de l'utilisateur
+$user_query = "SELECT * FROM users WHERE user_id = ?";
+$user_stmt = mysqli_prepare($connexion, $user_query);
+mysqli_stmt_bind_param($user_stmt, "i", $profile_id);
+mysqli_stmt_execute($user_stmt);
+$user_result = mysqli_stmt_get_result($user_stmt);
 
-if ($user = mysqli_fetch_assoc($result)) {
+if ($user = mysqli_fetch_assoc($user_result)) {
     echo "<br>Nom Public: " . htmlspecialchars($user["publicName"]);
     echo "<br>Nom d'utilisateur: " . htmlspecialchars($user["username"]);
     echo "<br>Date de création: " . htmlspecialchars($user["creationDate"]);
@@ -27,42 +27,43 @@ if ($user = mysqli_fetch_assoc($result)) {
     echo "<br>Utilisateur introuvable";
 }
 
-// Vérification connexion utilisateur
-$isLoggedIn = isset($_SESSION['users']) && !empty($_SESSION['users']);
-$current_user_id = $isLoggedIn ? $_SESSION['users'] : null;
+// Vérification de la connexion utilisateur
+$current_user_id = isset($_SESSION['users']) ? $_SESSION['users'] : null;
+$isLoggedIn = !is_null($current_user_id);
 
-// Traitement formulaire
+// Traitement du formulaire de suivi
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     if (!$isLoggedIn) {
         echo "<div class='error'>Connectez-vous pour suivre</div>";
     } else {
-        $followed_id = isset($_POST['followedUser_id']) ? intval($_POST['followedUser_id']) : 0;
+        $followed_id = $profile_id; // L'ID vient de l'URL, pas du POST
         
         if ($followed_id <= 0) {
-            echo "<div class='error'>ID invalide</div>";
+            echo "<div class='error'>ID utilisateur invalide</div>";
         } elseif ($current_user_id == $followed_id) {
             echo "<div class='error'>Vous ne pouvez pas vous suivre vous-même</div>";
         } else {
-            // Vérification si déjà suivi
-            $check_sql = "SELECT * FROM follow WHERE followerUser_id = ? AND followedUser_id = ?";
-            $check_stmt = mysqli_prepare($connexion, $check_sql);
+            // Vérifier si l'utilisateur est déjà suivi
+            $check_query = "SELECT * FROM follow WHERE followerUser_id = ? AND followedUser_id = ?";
+            $check_stmt = mysqli_prepare($connexion, $check_query);
             mysqli_stmt_bind_param($check_stmt, "ii", $current_user_id, $followed_id);
             mysqli_stmt_execute($check_stmt);
+            $check_result = mysqli_stmt_get_result($check_stmt);
             
-            if (mysqli_stmt_num_rows($check_stmt) > 0) {
-                echo "<div class='error'>Déjà suivi</div>";
+            if (mysqli_num_rows($check_result) > 0) {
+                echo "<div class='error'>Vous suivez déjà cet utilisateur</div>";
             } else {
-                // Insertion du follow
-                $insert_sql = "INSERT INTO follow (followerUser_id, followedUser_id, follow_date) VALUES (?, ?, NOW())";
-                $insert_stmt = mysqli_prepare($connexion, $insert_sql);
+                // Enregistrer le follow
+                $insert_query = "INSERT INTO follow (followerUser_id, followedUser_id, follow_date) VALUES (?, ?, NOW())";
+                $insert_stmt = mysqli_prepare($connexion, $insert_query);
                 mysqli_stmt_bind_param($insert_stmt, "ii", $current_user_id, $followed_id);
                 
                 if (mysqli_stmt_execute($insert_stmt)) {
-                    echo "<div class='success'>Suivi réussi!</div>";
+                    echo "<div class='success'>Vous suivez maintenant cet utilisateur!</div>";
                     
-                    // Mise à jour compteur
-                    $update_sql = "UPDATE users SET followers = followers + 1 WHERE user_id = ?";
-                    $update_stmt = mysqli_prepare($connexion, $update_sql);
+                    // Mettre à jour le compteur de followers
+                    $update_query = "UPDATE users SET followers = followers + 1 WHERE user_id = ?";
+                    $update_stmt = mysqli_prepare($connexion, $update_query);
                     mysqli_stmt_bind_param($update_stmt, "i", $followed_id);
                     mysqli_stmt_execute($update_stmt);
                 } else {
@@ -74,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 }
 ?>
 
-<form method="POST">
-    <input type="hidden" name="followedUser_id" value="<?= $profile_id ?>">
+<form method="POST" action="">
+    <input type="hidden" name="followed_id" value="<?= htmlspecialchars($profile_id) ?>">
     <input type="submit" name="submit" value="Suivre" <?= !$isLoggedIn ? 'disabled' : '' ?>>
 </form>
