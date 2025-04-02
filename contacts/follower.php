@@ -1,23 +1,4 @@
 <?php 
-// session_start();
-// require 'index.php'; // Connexion à la base de données
-
-// if (!isset($_SESSION['user_id'])) {
-//     header("Location: login.php");
-//     exit();
-// }
-
-function getFollowers($user_id, $pdo) {
-    $sql = "SELECT u.id, u.username FROM follows f 
-            JOIN users u ON f.followerUser_id = u.id 
-            WHERE f.followerUser_id = ?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$user_id]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
-$user_id = $_SESSION['user_id']; 
-$followers = getFollowers($user_id, $pdo);
  
 ?>
 
