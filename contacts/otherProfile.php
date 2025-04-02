@@ -1,5 +1,5 @@
 <?php
-session_start(); // Doit être au tout début du fichier
+session_start();
 $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
 $user_id = $_GET["user"];
 
@@ -17,10 +17,8 @@ if ($user = mysqli_fetch_assoc($request)) {
 }
 echo $_GET["user"];
 
-// Vérification plus robuste de la connexion
 $isLoggedIn = isset($_SESSION['user']) && !empty($_SESSION['user']);
 
-// Debug: Afficher l'état de connexion (à enlever en production)
 echo "<pre>Session: "; print_r($_SESSION); echo "</pre>";
 echo "État connexion: " . ($isLoggedIn ? 'Connecté' : 'Non connecté');
 
