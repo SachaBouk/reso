@@ -8,7 +8,7 @@
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $connection = mysqli_connect("http://91.162.115.85:25565", "root", "lecacaestcuit", "reso");
+    $connection = mysqli_connect("91.162.115.85:25565", "root", "lecacaestcuit", "reso");
 
     $email = $_POST['email'];
     $password = $_POST['password'];
