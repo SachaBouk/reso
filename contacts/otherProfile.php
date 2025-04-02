@@ -21,7 +21,7 @@ echo $_GET["user"];
 
 <?php
 // Vérifier si l'utilisateur est connecté
-$isLoggedIn = isset($_SESSION['user_id']);
+$isLoggedIn = isset($_SESSION['user']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     if (!$isLoggedIn) {
