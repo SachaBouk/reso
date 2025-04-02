@@ -1,16 +1,13 @@
 <?php
 session_start();
 
-// Connexion à la base de données
 $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
 if (!$connexion) {
     die("Erreur de connexion: " . mysqli_connect_error());
 }
 
-// Récupération de l'ID du profil visité
 $profile_id = isset($_GET['user']) ? intval($_GET['user']) : 0;
 
-// Requête pour obtenir les infos de l'utilisateur
 $user_query = "SELECT * FROM users WHERE user_id = ?";
 $user_stmt = mysqli_prepare($connexion, $user_query);
 mysqli_stmt_bind_param($user_stmt, "i", $profile_id);
@@ -27,23 +24,20 @@ if ($user = mysqli_fetch_assoc($user_result)) {
     echo "<br>Utilisateur introuvable";
 }
 
-// Vérification de la connexion utilisateur
 $current_user_id = isset($_SESSION['users']) ? $_SESSION['users'] : null;
 $isLoggedIn = !is_null($current_user_id);
 
-// Traitement du formulaire de suivi
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     if (!$isLoggedIn) {
         echo "<div class='error'>Connectez-vous pour suivre</div>";
     } else {
-        $followed_id = $profile_id; // L'ID vient de l'URL, pas du POST
+        $followed_id = $profile_id;
         
         if ($followed_id <= 0) {
             echo "<div class='error'>ID utilisateur invalide</div>";
         } elseif ($current_user_id == $followed_id) {
             echo "<div class='error'>Vous ne pouvez pas vous suivre vous-même</div>";
         } else {
-            // Vérifier si l'utilisateur est déjà suivi
             $check_query = "SELECT * FROM follow WHERE followerUser_id = ? AND followedUser_id = ?";
             $check_stmt = mysqli_prepare($connexion, $check_query);
             mysqli_stmt_bind_param($check_stmt, "ii", $current_user_id, $followed_id);
@@ -53,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             if (mysqli_num_rows($check_result) > 0) {
                 echo "<div class='error'>Vous suivez déjà cet utilisateur</div>";
             } else {
-                // Enregistrer le follow
                 $insert_query = "INSERT INTO follow (followerUser_id, followedUser_id) VALUES (?, ?)";
                 $insert_stmt = mysqli_prepare($connexion, $insert_query);
                 mysqli_stmt_bind_param($insert_stmt, "ii", $current_user_id, $followed_id);
@@ -61,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 if (mysqli_stmt_execute($insert_stmt)) {
                     echo "<div class='success'>Vous suivez maintenant cet utilisateur!</div>";
                     
-                    // Mettre à jour le compteur de followers
                     $update_query = "UPDATE users SET followers = followers + 1 WHERE user_id = ?";
                     $update_stmt = mysqli_prepare($connexion, $update_query);
                     mysqli_stmt_bind_param($update_stmt, "i", $followed_id);
