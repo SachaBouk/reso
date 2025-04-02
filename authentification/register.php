@@ -4,19 +4,19 @@
  
 <form action="" method="POST">
     <label for="lastName">lastname :</label>
-    <input type="text" id="lastName" name="nom" required>
+    <input type="text" id="lastName" name="lastName" required>
     <br>
     <label for="name">name :</label>
-    <input type="text" id="name" name="prenom" required>
+    <input type="text" id="name" name="name" required>
     <br>
     <label for="mail">mail :</label>
-    <input type="email" id="mail" name="email" required>
+    <input type="email" id="mail" name="mail" required>
     <br>
     <label for="username">username :</label>
-    <input type="text" id="username" name="prenom" required>
+    <input type="text" id="username" name="username" required>
     <br>
     <label for="publicName">publicName :</label>
-    <input type="text" id="publicName" name="prenom" required>
+    <input type="text" id="publicName" name="publicName" required>
     <br>
     <label for="password">password :</label>
     <input type="password" id="password" name="password" required>
@@ -45,11 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $publicName = htmlspecialchars($_POST["publicName"]);
     $password = htmlspecialchars($_POST["password"]);
     $confirm_password = htmlspecialchars($_POST["confirm_password"]);
+    $creationDate = date("Y-m-d");
  
     // Vérifie si les mots de passe correspondent
     if ($password === $confirm_password) {
         // Vérifier si l'email existe déjà dans la base de données
-        $query = "SELECT * FROM users WHERE email = '$mail'";
+        $query = "SELECT * FROM users WHERE mail = '$mail'";
         $result = mysqli_query($connection, $query);
  
         if (mysqli_num_rows($result) > 0) {
@@ -58,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<a href="?pages=login"><button>Se connecter</button></a>';
         } else {
             // inserre les données
-            $query = "INSERT INTO users (lastName, name, mail, username, publicName, password) VALUES ('$lastname', '$name', '$mail', '$username', '$publicName', '$password')";
+            $query = "INSERT INTO users (mail, name, lastName, username, publicName, password, creationDate) VALUES ('$mail', '$name', '$lastname', '$username', '$publicName', '$password', '$creationDate')";
  
             if (mysqli_query($connection, $query)) {
                 echo "Compte créé avec succès !";
