@@ -1,4 +1,11 @@
 <?php 
+session_start();
+require 'index.php'; // Connexion à la base de données
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
 
 function getFollowers($user_id, $pdo) {
     $sql = "SELECT u.id, u.username FROM follows f 
