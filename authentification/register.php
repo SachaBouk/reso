@@ -4,19 +4,19 @@
  
 <form action="" method="POST">
     <label for="lastName">lastname :</label>
-    <input type="text" id="lastName" name="nom" required>
+    <input type="text" id="lastName" name="lastName" required>
     <br>
     <label for="name">name :</label>
-    <input type="text" id="name" name="prenom" required>
+    <input type="text" id="name" name="name" required>
     <br>
     <label for="mail">mail :</label>
-    <input type="email" id="mail" name="email" required>
+    <input type="email" id="mail" name="mail" required>
     <br>
     <label for="username">username :</label>
-    <input type="text" id="username" name="prenom" required>
+    <input type="text" id="username" name="username" required>
     <br>
     <label for="publicName">publicName :</label>
-    <input type="text" id="publicName" name="prenom" required>
+    <input type="text" id="publicName" name="publicName" required>
     <br>
     <label for="password">password :</label>
     <input type="password" id="password" name="password" required>
@@ -38,7 +38,7 @@ if (!$connection) {
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les valeurs du formulaire
-    $lastname = htmlspecialchars($_POST["lastname"]);
+    $lastname = htmlspecialchars($_POST["lastName"]);
     $name = htmlspecialchars($_POST["name"]);
     $mail = htmlspecialchars($_POST["mail"]);
     $username = htmlspecialchars($_POST["username"]);
