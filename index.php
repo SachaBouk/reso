@@ -24,7 +24,7 @@
         session_start();
 
         if (isset($_GET['pages'])) {
-            $allowedPages = ['profile', 'login', 'logout', 'register', 'follower', 'follow', 'otherProfile'];
+            $allowedPages = ['profile', 'login', 'logout', 'register', 'follower', 'follow', 'otherProfile', 'post'];
             $page = $_GET['pages'];
 
             if (in_array($page, $allowedPages)) {
@@ -33,6 +33,9 @@
                 }
                 if ($page === "login" || $page === "logout" || $page === "register") {
                     include("authentification/" . $page . '.php');
+                }
+                if ($page === "post") {
+                    include("messages/" . $page . '.php');
                 }
             } else {
                 echo "<h1>Page non autorisée</h1>";
@@ -45,6 +48,8 @@
                 $request = mysqli_query($connexion, "SELECT * FROM post");
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<br>" . $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
+                    echo "<br><a href='?pages=post&post={$posts["post_id"]}'>Show more</a>";
+                    echo "<br>";
                 }
             }
         }
