@@ -49,6 +49,10 @@
         }
         ?>
     </main>
+    <form action="" method="POST">
+        <input type="text" id="content" name="content" placeholder="Que se pastis ?" required>
+        <input type="submit" value="Publier">
+    </form>
 </body>
 
 </html>
