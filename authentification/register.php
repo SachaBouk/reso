@@ -38,7 +38,7 @@ if (!$connection) {
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les valeurs du formulaire
-    $lastname = htmlspecialchars($_POST["lastName"]);
+    $lastname = htmlspecialchars($_POST["lastname"]);
     $name = htmlspecialchars($_POST["name"]);
     $mail = htmlspecialchars($_POST["mail"]);
     $username = htmlspecialchars($_POST["username"]);
