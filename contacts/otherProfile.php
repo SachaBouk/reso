@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     if (!$isLoggedIn) {
         echo "<div class='error'>Connectez-vous pour suivre</div>";
     } else {
-        $followed_id = isset($_POST['followed_id']) ? intval($_POST['followed_id']) : 0;
+        $followed_id = isset($_POST['followedUser_id']) ? intval($_POST['followedUser_id']) : 0;
         
         if ($followed_id <= 0) {
             echo "<div class='error'>ID invalide</div>";
