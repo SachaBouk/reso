@@ -1,4 +1,5 @@
 <?php
+session_start(); // Doit être au tout début du fichier
 $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
 $user_id = $_GET["user"];
 
@@ -16,12 +17,6 @@ if ($user = mysqli_fetch_assoc($request)) {
 }
 echo $_GET["user"];
 
-
-?>
-
-<?php
-session_start(); // Doit être au tout début du fichier
-
 // Vérification plus robuste de la connexion
 $isLoggedIn = isset($_SESSION['user']) && !empty($_SESSION['user']);
 
@@ -38,14 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         if (!empty($followed_id) && is_numeric($followed_id)) {
             echo "Suivi réussi! ID: " . htmlspecialchars($followed_id);
             
-            // Ici le code pour enregistrer en base de données
-            // Exemple: followUser($_SESSION['user_id'], $followed_id);
+            followUser($_SESSION['user_id'], $followed_id);
             
         } else {
             echo "<div class='error'>ID invalide</div>";
         }
     }
 }
+
 ?>
 
 <form action="" method="POST">
