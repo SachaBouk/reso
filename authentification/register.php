@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérifie si les mots de passe correspondent
     if ($password === $confirm_password) {
         // Vérifier si l'email existe déjà dans la base de données
-        $query = "SELECT * FROM users WHERE email = '$mail'";
+        $query = "SELECT * FROM users WHERE mail = '$mail'";
         $result = mysqli_query($connection, $query);
  
         if (mysqli_num_rows($result) > 0) {
