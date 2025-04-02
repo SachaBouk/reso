@@ -44,7 +44,7 @@
             } else {
                 $request = mysqli_query($connexion, "SELECT * FROM post");
                 while ($posts = mysqli_fetch_assoc($request)) {
-                    echo "<br>" . $posts["content"] . " By : <a href='#'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
+                    echo "<br>" . $posts["content"] . " By : <a href='?pages=otherProfile&?user={$posts["user_id"]}'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
                 }
             }
         }
