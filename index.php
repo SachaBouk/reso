@@ -56,8 +56,7 @@
                                     <input type='submit' value='Supprimer'>
                                 </form>";
                         }
-                        echo "</div>";
-                    echo "<br>";
+                    echo "</div>";
                 }
             }
         }
