@@ -13,6 +13,11 @@ body {
     display: flex;
 }
 
+a {
+    color: #fff;
+    text-decoration: underline;
+}
+
 .message {
     width: 100%;
     margin: 15px 0;
