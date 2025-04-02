@@ -92,5 +92,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
 <form method="POST" action="">
     <input type="hidden" name="followed_id" value="<?= htmlspecialchars($profile_id) ?>">
-    <input type="submit" name="submit" value="Suivre" <?= !$isLoggedIn ? 'disabled' : '' ?>>
+    <input type="submit" name="submit" value="Suivre" <?= !$isLoggedIn ? 'disabled' : "<div class='error'>Connectez-vous pour suivre</div>" ?>>
 </form>
