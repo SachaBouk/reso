@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         echo "<div class='error'>Vous devez être connecté pour suivre un utilisateur</div>";
     } else {
         // Récupérer l'ID de l'utilisateur suivi (depuis POST, pas GET)
-        $followed_id = $_POST['user'];
+        $followed_id = $_POST['followedUser_id'];
         
         // Valider l'ID (optionnel mais recommandé)
         if (!empty($followed_id) && is_numeric($followed_id)) {
