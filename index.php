@@ -50,17 +50,20 @@
         ?>
     </main>
     <form action="" method="POST">
+        <input type="hidden" name="publication" value="1">
         <input type="text" id="content" name="content" placeholder="Que se pastis ?" required>
         <input type="submit" value="Publier">
     </form>
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $content = $_POST['content'];
-        $user_id = $_SESSION['users'];
-        $postDate = date("Y-m-d H:i");
+        if (isset($_POST['publication'])) {
+            $content = $_POST['content'];
+            $user_id = $_SESSION['users'];
+            $postDate = date("Y-m-d H:i");
 
-        $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
-        $result = mysqli_query($connexion, "INSERT INTO post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
+            $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
+            $result = mysqli_query($connexion, "INSERT INTO post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
+        }
     }
 ?>
 </body>
