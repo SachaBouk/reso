@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_num_rows($request) > 0) {
         $user = mysqli_fetch_assoc($request);
         if ($password === $user['password']) {
-            $_SESSION['users'] = $email;
+            $_SESSION['users'] = $user['user_id'];
             header('Location: ?');
         } else {
             echo "<p>Mot de passe invalide</p>";
