@@ -18,50 +18,23 @@
         <a href="?pages=login">Login</a>
         <a href="?pages=profile">Profile</a>
         <a href="?pages=logout">Logout</a>
-        <a href="?pages=register">Register</a>
-
+        <a href="?pages=register">register</a>
         <?php
         session_start();
-        if (isset($_SESSION['users'])) {
-            echo '<form action="" method="POST" class="post-form">
-                    <textarea name="message" placeholder="Quoi de neuf ?" required></textarea>
-                    <button type="submit">Poster</button>
-                  </form>';
-        } else {
-            echo "<p>Veuillez vous connecter pour poster un message.</p>";
-        }
 
-        $connection = mysqli_connect("localhost", "root", "lecacaestcuit", "reso");
-        if (!$connection) {
-            die("Erreur de connexion : " . mysqli_connect_error());
-        }
+        if (isset($_GET['pages'])) {
+            $allowedPages = ['profile', 'login', 'logout', 'register', 'follower', 'follow'];
+            $page = $_GET['pages'];
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['message'])) {
-            $message = htmlspecialchars($_POST['message']);
-            if (isset($_SESSION['user_id'])) {
-                $user_id = $_SESSION['user_id'];
-                $query = "INSERT INTO post (user_id, message) VALUES ('$user_id', '$message')";
-                if (mysqli_query($connection, $query)) {
-                    echo "<p>Message posté avec succès !</p>";
-                } else {
-                    echo "<p>Erreur lors de l'envoi du message : " . mysqli_error($connection) . "</p>";
+            if (in_array($page, $allowedPages)) {
+                if ($page === "profile" || $page === "follower" || $page === "follow") {
+                    include("contacts/" . $page . '.php');
+                } if ($page === "login" || $page === "logout" || $page === "register") {
+                    include("authentification/" . $page . '.php');
                 }
             } else {
-                echo "<p>Erreur : utilisateur non connecté.</p>";
+                echo "<h1>Page non autorisée</h1>";
             }
-        }
-
-        $result = mysqli_query($connection, "SELECT * FROM post ORDER BY creation_date DESC");
-        if (mysqli_num_rows($result) > 0) {
-            echo '<div class="posts">';
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<div class="post">';
-                echo '<p><strong>Utilisateur ' . $row['user_id'] . ' :</strong></p>';
-                echo '<p>' . htmlspecialchars($row['message']) . '</p>';
-                echo '<p><small>Posté le ' . $row['creation_date'] . '</small></p>';
-                echo '</div>';
-            }
-            echo '</div>';
         } else {
             $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
             if (!$connexion) {
@@ -73,8 +46,6 @@
                 }
             }
         }
-
-        mysqli_close($connection);
         ?>
     </main>
 </body>
