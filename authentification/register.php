@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<a href="?pages=login"><button>Se connecter</button></a>';
         } else {
             // inserre les données
-            $query = "INSERT INTO users (nom, prenom, email, password) VALUES ('$lastname', '$name', '$mail', '$username', '$publicName', '$password')";
+            $query = "INSERT INTO users (lastname, name, mail, username, publicName, password) VALUES ('$lastname', '$name', '$mail', '$username', '$publicName', '$password')";
  
             if (mysqli_query($connection, $query)) {
                 echo "Compte créé avec succès !";
