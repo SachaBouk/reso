@@ -55,9 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                     echo "<div class='success'>Vous suivez maintenant cet utilisateur!</div>";
                     
                     $update_query = "UPDATE users SET followers = followers + 1 WHERE user_id = ?";
-                    $update_query2 = "UPDATE users SET following = following + 1 WHERE user_id = ?";
                     $update_stmt = mysqli_prepare($connexion, $update_query);
-                    $update_stmt = mysqli_prepare($connexion, $update_query2);
                     mysqli_stmt_bind_param($update_stmt, "i", $followed_id);
                     mysqli_stmt_execute($update_stmt);
                 } else {
