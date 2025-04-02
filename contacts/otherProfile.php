@@ -20,8 +20,6 @@ echo $_GET["user"];
 ?>
 
 <?php
-session_start(); // Ne pas oublier de démarrer la session
-
 // Vérifier si l'utilisateur est connecté
 $isLoggedIn = isset($_SESSION['user_id']);
 
