@@ -20,7 +20,7 @@
         <a href="?pages=logout">Logout</a>
         <?php
         if (isset($_GET['pages'])) {
-            $allowedPages = ['profile', 'login', 'logout'];
+            $allowedPages = ['profile', 'login', 'logout', 'register'];
             $page = $_GET['pages'];
 
             if (in_array($page, $allowedPages)) {
