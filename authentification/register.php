@@ -35,9 +35,7 @@ if (!$connection) {
     die("Connexion impossible : " . mysqli_connect_error());
 }
  
-// Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les valeurs du formulaire
     $lastname = htmlspecialchars($_POST["lastName"]);
     $name = htmlspecialchars($_POST["name"]);
     $mail = htmlspecialchars($_POST["mail"]);
@@ -47,18 +45,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirm_password = htmlspecialchars($_POST["confirm_password"]);
     $creationDate = date("Y-m-d");
  
-    // Vérifie si les mots de passe correspondent
     if ($password === $confirm_password) {
-        // Vérifier si l'email existe déjà dans la base de données
         $query = "SELECT * FROM users WHERE mail = '$mail'";
         $result = mysqli_query($connection, $query);
  
         if (mysqli_num_rows($result) > 0) {
-            // Si l'email est déjà utilisé, afficher un message d'erreur et un bouton pour aller sur login.php
             echo "Cet email est déjà utilisé. Vous êtes peut-être déjà inscrit. <br>";
             echo '<a href="?pages=login"><button>Se connecter</button></a>';
         } else {
-            // inserre les données
             $query = "INSERT INTO users (mail, name, lastName, username, publicName, password, creationDate) VALUES ('$mail', '$name', '$lastname', '$username', '$publicName', '$password', '$creationDate')";
  
             if (mysqli_query($connection, $query)) {

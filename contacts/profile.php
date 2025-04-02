@@ -11,7 +11,6 @@ echo "<a href='?pages=follow'>follows</a>";
 $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
 $user_id = mysqli_real_escape_string($connexion, $_SESSION['users']);
 
-// SQL query to fetch the user data
 $query = "SELECT * FROM users WHERE user_id = '$user_id'";
 $request = mysqli_query($connexion, $query);
 
