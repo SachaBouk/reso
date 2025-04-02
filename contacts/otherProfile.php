@@ -22,16 +22,12 @@ if ($user = mysqli_fetch_assoc($result)) {
     echo "<br> Cet utilisateur n'existe pas !";
 }
 
-// Debug
 echo "<br>ID dans l'URL: " . htmlspecialchars($user_id);
 
-// Vérification de connexion - À ADAPTER selon votre système de session
 $isLoggedIn = isset($_SESSION['users']) && !empty($_SESSION['users']);
 
-echo "<pre>Session: "; print_r($_SESSION); echo "</pre>";
 echo "<br>État connexion: " . ($isLoggedIn ? 'Connecté (ID: '.$_SESSION['users'].')' : 'Non connecté');
 
-// Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     if (!$isLoggedIn) {
         echo "<div class='error'>Vous devez être connecté pour suivre un utilisateur</div>";
@@ -42,8 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         if ($followed_id > 0) {
             echo "<div class='success'>Suivi réussi! ID: " . htmlspecialchars($followed_id) . "</div>";
             
-            // Exemple de fonction à implémenter
-            // followUser($_SESSION['user_id'], $followed_id);
             
         } else {
             echo "<div class='error'>ID invalide</div>";
