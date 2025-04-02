@@ -6,7 +6,7 @@ if (!$connexion) {
     $request = mysqli_query($connexion, "SELECT * FROM users");
     while ($users = mysqli_fetch_assoc($request)) {
         $user = $users["user_id"];
-        echo $users["username"];
+        echo "<br>".$users["username"];
     }
 }
 ?>
