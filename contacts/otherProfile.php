@@ -14,4 +14,3 @@ if ($user = mysqli_fetch_assoc($request)) {
 } else {
     echo "<br> Cet utilisateur n'existe pas !";
 }
-echo $_GET["user"];
