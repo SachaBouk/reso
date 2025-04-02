@@ -21,6 +21,6 @@ if ($user = mysqli_fetch_assoc($request)) {
     echo "<br>Followers: " . htmlspecialchars($user["followers"]);
     echo "<br>Following: " . htmlspecialchars($user["following"]);
 } else {
-    echo "Utilisateur non trouvé.";
+    
 }
 ?>
