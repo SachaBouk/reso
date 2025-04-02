@@ -21,6 +21,6 @@ if ($user = mysqli_fetch_assoc($request)) {
     echo "<br>Followers: " . htmlspecialchars($user["followers"]);
     echo "<br>Following: " . htmlspecialchars($user["following"]);
 } else {
-    echo "Veuillez vous connecter pour accéder à votre compte.";
+    echo "<br>Veuillez vous connecter pour accéder à votre compte.";
 }
 ?>
