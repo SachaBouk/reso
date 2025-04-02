@@ -63,7 +63,15 @@
             }
             echo '</div>';
         } else {
-            echo "<p>Aucun message pour le moment.</p>";
+            $connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
+            if (!$connexion) {
+                die("Connection failed: " . mysqli_connect_error());
+            }else{
+                $request = mysqli_query($connexion, "SELECT * FROM post");
+                while ($posts = mysqli_fetch_assoc($request)) {
+                    echo "<br>".$posts["content"]." By : ".$posts["user_id"]."<br>".$posts["date"];
+                }
+            }
         }
 
         mysqli_close($connection);

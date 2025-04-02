@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $email = $_POST['email'];
     $password = $_POST['password'];
+    
     $request = mysqli_query($connection, "SELECT * FROM users WHERE mail = '$email'");
-
     if (mysqli_num_rows($request) > 0) {
         $_SESSION['users'] = $email;
         header('Location: ?');
