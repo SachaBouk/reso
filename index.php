@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -14,15 +17,17 @@
     <div id="barreLateral">
         <img src="./images/resoLogoWhite.png" alt="Reso" id="logo">
         <a href="index.php">Accueil</a>
-        <a href="?pages=login">Login</a>
-        <a href="?pages=profile">Profile</a>
-        <a href="?pages=logout">Logout</a>
+        <?php if (!isset($_SESSION['users'])): ?>
+            <a href="?pages=login">Login</a>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['users'])): ?>
+            <a href="?pages=profile">Profile</a>
+            <a href="?pages=logout">Logout</a>
+        <?php endif; ?>
     </div>
     <main>
 
         <?php
-        session_start();
-
         $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
         if (!$connexion) {
             die("Connection failed: " . mysqli_connect_error());
