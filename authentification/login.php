@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 .login-container {
