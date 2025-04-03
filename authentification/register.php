@@ -72,7 +72,7 @@ mysqli_close($connection);
 
 <style>
 
-.Content {
+.register-content {
     display: flex;
     justify-content: center;
     align-items: center;
