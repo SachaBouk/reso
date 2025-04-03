@@ -50,6 +50,7 @@ body {
     color: white;
     margin: 10px 0;
     transition: color 0.5s;
+    font-size: 1.2em;
 }
 
 #barreLateral a:hover {
