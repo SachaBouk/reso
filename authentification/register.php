@@ -98,7 +98,7 @@ form{
 }
 
 legend{
-    font-size: 1.5em;
+    font-size: 1.9em;
     margin-bottom: 20px;
     color: black;
     font-weight: bold;
