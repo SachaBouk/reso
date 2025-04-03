@@ -97,8 +97,17 @@ form{
     padding: 20px;
 }
 
+h2{
+    font-size: 1.9em;
+    margin-bottom: 20px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
+}
+
 legend{
-    font-size: 1.5em;
+    font-size: 1.9em;
     margin-bottom: 20px;
     color: black;
     font-weight: bold;
