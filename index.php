@@ -56,7 +56,7 @@
                     echo "<div class='message'>";
                     echo $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
                     echo "<br>";
-                    echo "<a href='?pages=post&post={$posts["post_id"]}'>Show more</a>";
+                    echo "<a href='?pages=post&post={$posts["post_id"]}'>Voir plus...</a>";
                     echo "<br>";
                     if ($_SESSION['users'] == $posts['user_id']) {
                         echo "<form action='index.php' method='POST' style='display:inline;'>
