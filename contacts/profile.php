@@ -15,11 +15,15 @@ $query = "SELECT * FROM rs_users WHERE user_id = '$user_id'";
 $request = mysqli_query($connexion, $query);
 
 if ($user = mysqli_fetch_assoc($request)) {
+    echo "<div class='Content'>
+            <div class='register-container'>";
     echo "<br>Nom Public: " . htmlspecialchars($user["publicName"]);
     echo "<br>Nom d'utilisateur: " . htmlspecialchars($user["username"]);
     echo "<br>Date de création: " . htmlspecialchars($user["creationDate"]);
     echo "<br>Followers: " . htmlspecialchars($user["followers"]);
     echo "<br>Following: " . htmlspecialchars($user["following"]);
+    echo "</div>
+            </div>";
 
 } else {
     echo "<br>Veuillez vous connecter pour accéder à votre compte.";
