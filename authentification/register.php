@@ -87,7 +87,7 @@ mysqli_close($connection);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 350px;
+    width: 400px;
 }
 
 form{
@@ -107,7 +107,7 @@ legend{
 }
 
 input {
-    width: 100%;
+    width: 120%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
