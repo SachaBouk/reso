@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <style>
 
-.Content {
+.register-content {
     display: flex;
     justify-content: center;
     align-items: center;
