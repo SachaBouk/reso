@@ -103,6 +103,7 @@ button:hover {
 
 p{
     margin: 10px 0;
+    margin-top: 20px;
 }
 
 
