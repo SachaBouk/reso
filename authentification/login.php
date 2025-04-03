@@ -5,7 +5,7 @@
         <input type="email" name="email" placeholder="E-mail" required>
         <input type="password" name="password" placeholder="Mot de passe" required>
         <button type="submit">Se connecter</button>
-        <p>je n'ai pas de compte? <a href="?pages=register">S'inscrire</a></p>
+        <p>je n'ai pas de compte ? <a href="?pages=register"><br><br>S'inscrire</a></p>
     </form>
     </div>
 </div>
@@ -58,8 +58,34 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
     padding: 20px;
+}
+
+legend{
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-decoration: underline;
+    text-decoration-color: black;
+    text-decoration-thickness: 2px;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-skip: objects;
+    text-decoration-line: underline;
+    text-decoration-position: under;
+    text-decoration-color: black;
+    text-decoration-thickness: 2px;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-skip: objects;
+    text-decoration-line: underline;
+    text-decoration-position: under;
+    text-decoration-color: black;
+    text-decoration-thickness: 2px;
 }
 
 input {
