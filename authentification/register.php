@@ -1,4 +1,4 @@
-<div class="register-content">
+<div class="global-content">
     <div class="register-container">
         <h2>Créer un compte</h2>
 
@@ -72,7 +72,7 @@ mysqli_close($connection);
 
 <style>
 
-.register-content {
+.global-content {
     display: flex;
     justify-content: center;
     align-items: center;

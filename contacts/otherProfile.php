@@ -16,7 +16,7 @@ mysqli_stmt_execute($user_stmt);
 $user_result = mysqli_stmt_get_result($user_stmt);
 
 if ($user = mysqli_fetch_assoc($user_result)) {
-    echo "<div class='register-content'>
+    echo "<div class='global-content'>
             <div class='register-container'>";
     echo "<br>Nom Public : <strong>" . htmlspecialchars($user["publicName"]) . "</strong>";
     echo "<br>Nom d'utilisateur : <strong>" . htmlspecialchars($user["username"]) . "</strong>";

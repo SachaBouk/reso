@@ -12,7 +12,7 @@ $query = "SELECT * FROM rs_users WHERE user_id = '$user_id'";
 $request = mysqli_query($connexion, $query);
 
 if ($user = mysqli_fetch_assoc($request)) {
-    echo "<div class='register-content'>
+    echo "<div class='global-content'>
             <div class='register-container'>";
     echo "<br>Nom Public : <strong>" . htmlspecialchars($user["publicName"]) . "</strong>";
     echo "<br>Nom d'utilisateur : <strong>" . htmlspecialchars($user["username"]) . "</strong>";
@@ -23,7 +23,7 @@ if ($user = mysqli_fetch_assoc($request)) {
             </div>";
 
 } else {
-    echo "<div class='register-content'>
+    echo "<div class='global-content'>
             <div class='register-container'>";
     echo "<br><strong>Veuillez vous connecter pour accéder à votre compte.</strong>";
     echo "</div>

@@ -1,4 +1,4 @@
-<div class="register-content">
+<div class="global-content">
     <div class="login-container">
     <form class="login" method="POST" action="?pages=login">
         <legend>SE CONNECTER</legend>
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <style>
 
-.register-content {
+.global-content {
     display: flex;
     justify-content: center;
     align-items: center;
