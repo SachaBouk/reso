@@ -60,7 +60,7 @@
                         if ($_SESSION['users'] == $posts['user_id']) {
                             echo "<form action='index.php' method='POST' style='display:inline;'>
                                         <input type='hidden' name='post_id' value='{$posts["post_id"]}'>
-                                        <input type='submit' value='Supprimer'>
+                                        <input class='delete' type='submit' value='Supprimer'>
                                     </form>";
                         }
                     echo "</div>";

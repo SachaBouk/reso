@@ -39,6 +39,15 @@ body {
     text-decoration: underline;
 }
 
+.message .delete {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+    color: #646464;
+    text-decoration: underline;
+}
+
 #barreLateral {
     display: flex;
     flex-direction: column;
