@@ -16,11 +16,14 @@ mysqli_stmt_execute($user_stmt);
 $user_result = mysqli_stmt_get_result($user_stmt);
 
 if ($user = mysqli_fetch_assoc($user_result)) {
-    echo "<br>Nom Public: " . htmlspecialchars($user["publicName"]);
-    echo "<br>Nom d'utilisateur: " . htmlspecialchars($user["username"]);
-    echo "<br>Date de création: " . htmlspecialchars($user["creationDate"]);
-    echo "<br>Followers: " . htmlspecialchars($user["followers"]);
-    echo "<br>Following: " . htmlspecialchars($user["following"]);
+    echo "<div class='Content'>
+            <div class='register-container'>";
+    echo "<br>Nom Public : <strong>" . htmlspecialchars($user["publicName"]) . "</strong>";
+    echo "<br>Nom d'utilisateur : <strong>" . htmlspecialchars($user["username"]) . "</strong>";
+    echo "<br>Date de création : <strong>" . htmlspecialchars($user["creationDate"]) . "</strong>";
+    echo "<br>Followers : <strong>" . htmlspecialchars($user["followers"]) . "</strong>";
+    echo "<br>Following : <strong>" . htmlspecialchars($user["following"]) . "</strong>";
+
 } else {
     echo "<br>Utilisateur introuvable";
 }
@@ -92,5 +95,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
 <form method="POST" action="">
     <input type="hidden" name="followed_id" value="<?= htmlspecialchars($profile_id) ?>">
-    <input type="submit" name="submit" value="Suivre" <?= !$isLoggedIn ? '' : '' ?>>
+    <input class="button" type="submit" name="submit" value="Suivre" <?= !$isLoggedIn ? '' : '' ?>>
 </form>
+</div>
+</div>
+<style>
+    .button {
+        background: black;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        margin-top: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1.2em;
+    }
+</style>
