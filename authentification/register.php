@@ -112,11 +112,11 @@ input {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 72px;
-    margin : 10px 0;
+    margin : 5px 0;
 }
 
 .input-group {
-    margin: 10px 0;
+    margin: 5px 0;
     text-align: left;
 }
 
@@ -132,7 +132,7 @@ button {
     border: none;
     padding: 10px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 5px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 1em;
