@@ -68,24 +68,6 @@ legend{
     font-weight: bold;
     text-align: center;
     margin-top: 0;
-    margin-bottom: 20px;
-    text-decoration: underline;
-    text-decoration-color: black;
-    text-decoration-thickness: 2px;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: none;
-    text-decoration-skip: objects;
-    text-decoration-line: underline;
-    text-decoration-position: under;
-    text-decoration-color: black;
-    text-decoration-thickness: 2px;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: none;
-    text-decoration-skip: objects;
-    text-decoration-line: underline;
-    text-decoration-position: under;
-    text-decoration-color: black;
-    text-decoration-thickness: 2px;
 }
 
 input {
