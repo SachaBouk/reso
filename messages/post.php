@@ -5,9 +5,10 @@ $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Camp
 if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
 } else {
-    $request = mysqli_query($connexion, "SELECT * FROM rs_post WHERE post_id = '$post_id'");
+    $request = mysqli_query($connexion, "SELECT * FROM rs_post WHERE post_id = '$post_id'
+                                                JOIN rs_users ON rs_post.user_id = rs_users.user_id");
     while ($posts = mysqli_fetch_assoc($request)) {
-        echo "<br><a href='?pages=otherProfile&user={$posts["user_id"]}'>".$posts["user_id"]."</a> says :";
+        echo "<br><a href='?pages=otherProfile&user={$posts["user_id"]}'>".$posts["publicName"]."</a> says :";
         echo "<br>" . $posts["content"] . "<br>" . $posts["date"];
     }
 }
