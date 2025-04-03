@@ -62,7 +62,7 @@ form{
 }
 
 legend{
-    font-size: 1.7em;
+    font-size: 1.9em;
     margin-bottom: 30px;
     color: black;
     font-weight: bold;
