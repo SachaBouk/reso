@@ -81,7 +81,7 @@ body {
 #barreLateral a {
     text-decoration: none;
     color: white;
-    margin: 10px 0;
+    margin: 20px 0;
     transition: color 0.5s;
     font-size: 1.5em;
 }

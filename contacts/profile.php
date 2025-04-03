@@ -1,8 +1,8 @@
 <?php
 if (isset($_SESSION['users'])) {
-    return;
+    echo "";
 } else {
-    echo "Vous n'êtes pas connecter.";
+    echo "";
 }
 
 $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
@@ -23,6 +23,10 @@ if ($user = mysqli_fetch_assoc($request)) {
             </div>";
 
 } else {
-    echo "<br>Veuillez vous connecter pour accéder à votre compte.";
+    echo "<div class='Content'>
+            <div class='register-container'>";
+    echo "<br><strong>Veuillez vous connecter pour accéder à votre compte.</strong>";
+    echo "</div>
+            </div>";
 }
 ?>
