@@ -112,12 +112,18 @@ input {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin : 20px 0;
+    margin : 10px 0;
 }
 
 .input-group {
     margin: 10px 0;
     text-align: left;
+}
+
+
+label {
+    display: block;
+    font-weight: bold;
 }
 
 button {
@@ -130,7 +136,7 @@ button {
     cursor: pointer;
     border-radius: 5px;
     font-size: 1em;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 button:hover {
