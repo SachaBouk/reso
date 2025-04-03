@@ -136,17 +136,11 @@ button {
     cursor: pointer;
     border-radius: 5px;
     font-size: 1em;
-    margin: 10px 0;
 }
 
 button:hover {
     background: black;
 }
-
-p{
-    margin: 10px 0;
-}
-
 
 
 </style>
