@@ -36,9 +36,14 @@ body {
     text-decoration: none;
 }
 
-.message a {
+.message .name, .more {
     color: #fff;
     text-decoration: underline;
+}
+
+.message .title {
+    display: flex;
+    gap: 5px;
 }
 
 .message .delete {
