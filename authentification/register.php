@@ -76,7 +76,6 @@ mysqli_close($connection);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
 }
 
 .register-container {
