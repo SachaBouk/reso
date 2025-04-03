@@ -53,16 +53,15 @@
                 $request = mysqli_query($connexion, "SELECT rs_post.*, rs_users.publicName FROM rs_post JOIN rs_users ON rs_post.user_id = rs_users.user_id");
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<div class='message'>";
-                    echo $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["publicName"] . "</a>" . "<br>" . $posts["date"];
-                    echo "<br>";
-                    echo "<a href='?pages=post&post={$posts["post_id"]}'>Voir plus...</a>";
-                    echo "<br>";
-                    if ($_SESSION['users'] == $posts['user_id']) {
-                        echo "<form action='index.php' method='POST' style='display:inline;'>
-                                    <input type='hidden' name='post_id' value='{$posts["post_id"]}'>
-                                    <input type='submit' value='Supprimer'>
-                                </form>";
-                    }
+                        echo "<a class='name' href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["publicName"] . "<span class='date'> " . $posts["date"] . "</span></a>";
+                        echo "<p class='content'>" . $posts["content"] . "</p>";
+                        echo "<a href='?pages=post&post={$posts["post_id"]}'>Voir plus...</a>";
+                        if ($_SESSION['users'] == $posts['user_id']) {
+                            echo "<form action='index.php' method='POST' style='display:inline;'>
+                                        <input type='hidden' name='post_id' value='{$posts["post_id"]}'>
+                                        <input class='delete' type='submit' value='Supprimer'>
+                                    </form>";
+                        }
                     echo "</div>";
                 }
             }
