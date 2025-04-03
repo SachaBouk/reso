@@ -140,7 +140,6 @@ button {
     border: none;
     padding: 10px;
     width: 100%;
-    margin-top: 5px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 1em;
