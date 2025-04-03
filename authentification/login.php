@@ -46,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -78,7 +77,7 @@ input {
 }
 
 button {
-    background: #ff5733;
+    background: black;
     color: white;
     border: none;
     padding: 10px;
@@ -87,10 +86,15 @@ button {
     cursor: pointer;
     border-radius: 5px;
     font-size: 1em;
+    margin: 20px 0;
 }
 
 button:hover {
-    background: #c44224;
+    background: black;
+}
+
+p{
+    margin: 10px 0;
 }
 
 
