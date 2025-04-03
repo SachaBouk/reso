@@ -98,8 +98,8 @@ form{
 }
 
 h2{
-    font-size: 1.7em;
-    margin-bottom: 20px;
+    font-size: 1.9em;
+    margin-bottom: 10px;
     color: black;
     font-weight: bold;
     text-align: center;
