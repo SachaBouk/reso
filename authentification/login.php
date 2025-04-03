@@ -69,12 +69,28 @@ input {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin : 10px 0;
+    margin : 20px 0;
 }
 
 .input-group {
     margin: 10px 0;
     text-align: left;
+}
+
+button {
+    background: #ff5733;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+button:hover {
+    background: #c44224;
 }
 
 
