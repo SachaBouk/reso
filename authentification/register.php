@@ -111,7 +111,7 @@ input {
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
-    border-radius: 100px;
+    border-radius: 72px;
     margin : 10px 0;
 }
 
