@@ -20,12 +20,6 @@
     </div>
     <main>
 
-        <form action="" method="POST">
-            <input type="hidden" name="publication" value="1">
-            <input type="text" id="content" name="content" placeholder="Que se pastis ?" required>
-            <input type="submit" id="publish" value="Publier">
-        </form>
-
         <?php
         session_start();
 
@@ -47,6 +41,11 @@
                 echo "<h1>Page non autorisée</h1>";
             }
         } else {
+            echo "<form action='' method='POST'>
+            <input type='hidden' name='publication' value='1'>
+            <input type='text' id='content' name='content' placeholder='Que se pastis ?' required>
+            <input type='submit' id='publish' value='Publier'>
+        </form>";
             $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
             if (!$connexion) {
                 die("Connection failed: " . mysqli_connect_error());
