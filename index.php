@@ -88,19 +88,3 @@
 </body>
 
 </html>
-<style>
-    #content {
-        height: 5vh;
-        width: 100%;
-    }
-    #publish {
-        height: 5vh;
-        width: 10%;
-        background-color: black;
-        color: white;
-        border-radius: 16px;
-        border: 0;
-        margin-top: 10px;
-        cursor: pointer;
-    }
-</style>
