@@ -94,7 +94,6 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
 }
 
 h2{
