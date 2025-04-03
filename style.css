@@ -18,6 +18,10 @@ a {
     transition: color 0.5s;
 }
 
+a:hover {
+    color: #5D99E1 !important;
+}
+
 .message {
     width: 100%;
     margin: 15px 0;
@@ -90,7 +94,7 @@ a {
 }
 
 #content {
-    height: 5vh;
+    height: 10vh;
     width: 100%;
     border-radius: 10px;
     padding: 10px;
@@ -165,8 +169,4 @@ main {
     text-align: center;
     width: 500px;
     font-size: 1.2em;
-}
-
-a:hover {
-    color: #5D99E1;
 }
