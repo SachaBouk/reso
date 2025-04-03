@@ -75,20 +75,24 @@
     $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['publication'])) {
-            $content = $_POST['content'];
-            $user_id = $_SESSION['users'];
-            $postDate = date("Y-m-d H:i");
+        if (!isset($_SESSION['last_submission']) || $_SESSION['last_submission'] !== $_POST) {
+            $_SESSION['last_submission'] = $_POST;
 
-            $result = mysqli_query($connexion, "INSERT INTO rs_post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
-        } elseif (isset($_POST['post_id'])) {
-            $post_id = $_POST['post_id'];
+            if (isset($_POST['publication'])) {
+                $content = $_POST['content'];
+                $user_id = $_SESSION['users'];
+                $postDate = date("Y-m-d H:i");
 
-            $result = mysqli_query($connexion, "DELETE FROM rs_post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
+                $result = mysqli_query($connexion, "INSERT INTO rs_post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
+            } elseif (isset($_POST['post_id'])) {
+                $post_id = $_POST['post_id'];
+
+                $result = mysqli_query($connexion, "DELETE FROM rs_post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
+            }
+
+            header("Location: " . $_SERVER['PHP_SELF']);
+            die();
         }
-
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit();
     }
     ?>
 </body>
