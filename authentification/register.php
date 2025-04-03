@@ -99,7 +99,7 @@ form{
 
 h2{
     font-size: 1.9em;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: black;
     font-weight: bold;
     text-align: center;
