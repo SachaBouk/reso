@@ -24,7 +24,7 @@ if (!$connexion) {
 <form method="POST" action="">
     <input type="hidden" name="reply" value="reply">
     <input type="text" name="replyContent" id="replyContent" placeholder="Write your reply">
-    <input type="submit" value="Reply">
+    <input type="submit" id="reply" value="Reply">
 </form>
 <?php
 $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
