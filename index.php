@@ -28,18 +28,15 @@
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        // Si le formulaire est soumis
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['publication'])) {
                 $content = $_POST['content'];
                 $user_id = $_SESSION['users'];
                 $postDate = date("Y-m-d H:i");
 
-                // Insérer le post dans la base de données
                 $result = mysqli_query($connexion, "INSERT INTO rs_post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
 
                 if ($result) {
-                    // Rediriger vers la même page pour afficher le nouveau post
                     header("Location: " . $_SERVER['PHP_SELF']);
                     exit();
                 } else {
@@ -48,9 +45,7 @@
             } elseif (isset($_POST['post_id'])) {
                 $post_id = $_POST['post_id'];
 
-                // Supprimer le post
                 $result = mysqli_query($connexion, "DELETE FROM rs_post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
-                // Rediriger après suppression
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();
             }
@@ -75,17 +70,14 @@
             }
         } else {
         ?>
-            <!-- Formulaire de publication -->
             <form action="" method="POST">
                 <input type="hidden" name="publication" value="1">
                 <input type="text" id="content" name="content" placeholder="Que se pastis ?" maxlength="100" required>
                 <input type="submit" id="publish" value="Publier">
             </form>
 
-            <!-- Afficher les posts existants -->
             <div id="postsContainer">
                 <?php
-                // Récupérer et afficher les posts existants
                 $request = mysqli_query($connexion, "SELECT rs_post.*, rs_users.publicName 
                                                      FROM rs_post 
                                                      JOIN rs_users ON rs_post.user_id = rs_users.user_id 
