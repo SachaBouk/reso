@@ -21,6 +21,17 @@ body {
     border-radius: 10px;
     background-color: #000;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.message .content {
+    color: #fff;
+    margin: 15px 0;
+}
+
+.message .date {
+    color: #646464;
 }
 
 .message a {
