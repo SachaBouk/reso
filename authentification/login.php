@@ -62,8 +62,8 @@ form{
 }
 
 legend{
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    font-size: 1.9em;
+    margin-bottom: 30px;
     color: black;
     font-weight: bold;
     text-align: center;

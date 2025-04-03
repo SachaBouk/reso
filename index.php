@@ -12,7 +12,7 @@
 
 <body>
     <div id="barreLateral">
-        <img src="./images/resoLogo.png" alt="Reso" id="logo">
+        <img src="./images/resoLogoWhite.png" alt="Reso" id="logo">
         <a href="index.php">Accueil</a>
         <a href="?pages=login">Login</a>
         <a href="?pages=profile">Profile</a>

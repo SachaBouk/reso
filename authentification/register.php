@@ -3,28 +3,28 @@
 <h2>Créer un compte</h2>
  
 <form action="" method="POST">
-    <label for="lastName">lastname :</label>
+    <label for="lastName">Nom :</label>
     <input type="text" id="lastName" name="lastName" required>
     <br>
-    <label for="name">name :</label>
+    <label for="name">Prénom :</label>
     <input type="text" id="name" name="name" required>
     <br>
-    <label for="mail">mail :</label>
+    <label for="mail">Email :</label>
     <input type="email" id="mail" name="mail" required>
     <br>
-    <label for="username">username :</label>
+    <label for="username">Pseudonyme :</label>
     <input type="text" id="username" name="username" required>
     <br>
-    <label for="publicName">publicName :</label>
+    <label for="publicName">Nom Public :</label>
     <input type="text" id="publicName" name="publicName" required>
     <br>
-    <label for="password">password :</label>
+    <label for="password">Mot de passe :</label>
     <input type="password" id="password" name="password" required>
     <br>
-    <label for="confirm_password">Confirm password :</label>
+    <label for="confirm_password">Confirmer Mot de passe :</label>
     <input type="password" id="confirm_password" name="confirm_password" required>
     <br>
-    <button type="submit">Subscribe</button>
+    <button type="submit">S'inscrire</button>
 </form>
 </div>
 </div>
@@ -136,7 +136,7 @@ button {
     margin-top: 5px;
     cursor: pointer;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 1.2em;
 }
 
 button:hover {
