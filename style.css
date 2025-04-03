@@ -36,8 +36,14 @@ body {
     text-decoration: none;
 }
 
-.message .name, .more {
+.message .name {
     color: #fff;
+    text-decoration: underline;
+}
+
+.message .more {
+    color: #ccc;
+    font-size: 0.9rem;
     text-decoration: underline;
 }
 
