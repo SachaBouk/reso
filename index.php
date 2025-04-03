@@ -20,12 +20,6 @@
     </div>
     <main>
 
-        <form action="" method="POST">
-            <input type="hidden" name="publication" value="1">
-            <input type="text" id="content" name="content" placeholder="Que se pastis ?" required>
-            <input type="submit" id="publish" value="Publier">
-        </form>
-
         <?php
         session_start();
 
@@ -47,6 +41,11 @@
                 echo "<h1>Page non autorisée</h1>";
             }
         } else {
+            echo "<form action='' method='POST'>
+            <input type='hidden' name='publication' value='1'>
+            <input type='text' id='content' name='content' placeholder='Que se pastis ?' required>
+            <input type='submit' id='publish' value='Publier'>
+        </form>";
             $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
             if (!$connexion) {
                 die("Connection failed: " . mysqli_connect_error());
@@ -56,7 +55,7 @@
                     echo "<div class='message'>";
                     echo $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
                     echo "<br>";
-                    echo "<a href='?pages=post&post={$posts["post_id"]}'>Show more</a>";
+                    echo "<a href='?pages=post&post={$posts["post_id"]}'>Voir plus...</a>";
                     echo "<br>";
                     if ($_SESSION['users'] == $posts['user_id']) {
                         echo "<form action='index.php' method='POST' style='display:inline;'>
