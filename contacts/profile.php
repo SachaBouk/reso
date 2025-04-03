@@ -5,9 +5,6 @@ if (isset($_SESSION['users'])) {
     echo "Vous n'êtes pas connecter.";
 }
 
-echo "<a href='?pages=follower'>followers</a>";
-echo "<a href='?pages=follow'>follows</a>";
-
 $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
 $user_id = mysqli_real_escape_string($connexion, $_SESSION['users']);
 
@@ -17,11 +14,11 @@ $request = mysqli_query($connexion, $query);
 if ($user = mysqli_fetch_assoc($request)) {
     echo "<div class='Content'>
             <div class='register-container'>";
-    echo "<br>Nom Public: " . htmlspecialchars($user["publicName"]);
-    echo "<br>Nom d'utilisateur: " . htmlspecialchars($user["username"]);
-    echo "<br>Date de création: " . htmlspecialchars($user["creationDate"]);
-    echo "<br>Followers: " . htmlspecialchars($user["followers"]);
-    echo "<br>Following: " . htmlspecialchars($user["following"]);
+    echo "<br>Nom Public : <strong>" . htmlspecialchars($user["publicName"]) . "</strong>";
+    echo "<br>Nom d'utilisateur : <strong>" . htmlspecialchars($user["username"]) . "</strong>";
+    echo "<br>Date de création : <strong>" . htmlspecialchars($user["creationDate"]) . "</strong>";
+    echo "<br>Followers : <strong>" . htmlspecialchars($user["followers"]) . "</strong>";
+    echo "<br>Following : <strong>" . htmlspecialchars($user["following"]) . "</strong>";
     echo "</div>
             </div>";
 
