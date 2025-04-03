@@ -1,4 +1,4 @@
-<div class="Content">
+<div class="register-content">
     <div class="login-container">
     <form class="login" method="POST" action="?pages=login">
         <legend>SE CONNECTER</legend>
