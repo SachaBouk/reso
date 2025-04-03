@@ -31,11 +31,12 @@ $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Camp
 if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
 } else {
-    $request = mysqli_query($connexion, "SELECT * FROM rs_reply 
-                                                JOIN rs_users ON rs_reply.user_id = rs_users.user_id
-                                                WHERE post_id = '$post_id'");
+    $request = mysqli_query($connexion, "SELECT rs_reply.*, rs_users.publicName 
+                                         FROM rs_reply 
+                                         JOIN rs_users ON rs_reply.user_id = rs_users.user_id
+                                         WHERE post_id = '$post_id'
+                                         ORDER BY rs_reply.reply_id DESC");
     while ($posts = mysqli_fetch_assoc($request)) {
-
         echo "<div class='messageReply'>";
         echo "<div class='title'>";
         echo "<a class='name' href='?pages=otherProfile&user={$posts["user_id"]}'><strong>" . $posts["publicName"] . "</strong></a>";
@@ -65,3 +66,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
+?>
