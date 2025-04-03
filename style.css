@@ -58,7 +58,7 @@ body {
 main {
     flex: 1;
     padding: 20px;
-    background-color: #fff;
+    background-color: #3f3f3f;
 }
 
 .post-form {
