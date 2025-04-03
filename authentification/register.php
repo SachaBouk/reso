@@ -76,6 +76,7 @@ mysqli_close($connection);
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 95vh;
 }
 
 .register-container {
@@ -140,7 +141,6 @@ button {
     border: none;
     padding: 10px;
     width: 100%;
-    margin-top: 5px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 1em;
