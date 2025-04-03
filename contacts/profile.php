@@ -23,7 +23,7 @@ if ($user = mysqli_fetch_assoc($request)) {
             </div>";
 
 } else {
-    echo "<div class='Content'>
+    echo "<div class='register-content'>
             <div class='register-container'>";
     echo "<br><strong>Veuillez vous connecter pour accéder à votre compte.</strong>";
     echo "</div>
