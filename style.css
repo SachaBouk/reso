@@ -33,6 +33,7 @@ body {
 
 .message .date {
     color: #646464;
+    text-decoration: none;
 }
 
 .message a {

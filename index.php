@@ -53,7 +53,7 @@
                 $request = mysqli_query($connexion, "SELECT rs_post.*, rs_users.publicName FROM rs_post JOIN rs_users ON rs_post.user_id = rs_users.user_id");
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<div class='message'>";
-                        echo "<a class='name' href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["publicName"] . "<span class='date'>" . $posts["date"] . "</span></a>";
+                        echo "<a class='name' href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["publicName"] . "<span class='date'> " . $posts["date"] . "</span></a>";
                         echo "<p class='content'>" . $posts["content"] . "</p>";
                         echo "<a href='?pages=post&post={$posts["post_id"]}'>Voir plus...</a>";
                         if ($_SESSION['users'] == $posts['user_id']) {
