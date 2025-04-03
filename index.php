@@ -50,10 +50,10 @@
             if (!$connexion) {
                 die("Connection failed: " . mysqli_connect_error());
             } else {
-                $request = mysqli_query($connexion, "SELECT * FROM rs_post");
+                $request = mysqli_query($connexion, "SELECT rs_post.*, rs_users.publicName FROM rs_post JOIN rs_users ON rs_post.user_id = rs_users.user_id");
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<div class='message'>";
-                    echo $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
+                    echo $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["publicName"] . "</a>" . "<br>" . $posts["date"];
                     echo "<br>";
                     echo "<a href='?pages=post&post={$posts["post_id"]}'>Voir plus...</a>";
                     echo "<br>";
