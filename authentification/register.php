@@ -1,5 +1,5 @@
-<div class="Content">
-    <div class="register-container ">
+<div class="content">
+    <div class="register-container">
         <h2>Créer un compte</h2>
 
         <form action="" method="POST">
