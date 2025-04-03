@@ -76,15 +76,70 @@ mysqli_close($connection);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
 }
 
 .register-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin-top: 50px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+legend{
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin : 20px 0;
+}
+
+.input-group {
+    margin: 10px 0;
+    text-align: left;
+}
+
+button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    margin: 20px 0;
+}
+
+button:hover {
+    background: black;
+}
+
+p{
+    margin: 10px 0;
 }
 
 
