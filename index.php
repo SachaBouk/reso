@@ -13,16 +13,12 @@
 <body>
     <div id="barreLateral">
         <img src="./images/X.png" alt="X" id="logo">
+        <a href="index.php">Accueil</a>
+        <a href="?pages=profile">Profile</a>  
+        <a href="?pages=login">Login</a>
+        <a href="?pages=logout">Logout</a>      
     </div>
     <main>
-        <a href="index.php">Accueil</a>
-        |
-        <a href="?pages=login">Login</a>
-        |
-        <a href="?pages=profile">Profile</a>
-        |
-        <a href="?pages=logout">Logout</a>
-
         <form action="" method="POST">
             <input type="hidden" name="publication" value="1">
             <input type="text" id="content" name="content" placeholder="Que se pastis ?" required>
