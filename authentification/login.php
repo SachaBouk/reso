@@ -1,10 +1,14 @@
-<form class="login" method="POST" action="?pages=login">
-    <legend>SE CONNECTER</legend>
-    <input type="email" name="email" placeholder="E-mail" required>
-    <input type="password" name="password" placeholder="Mot de passe" required>
-    <button type="submit">Se connecter</button>
-    <p>je n'ai pas de compte? <a href="?pages=register">S'inscrire</a></p>
-</form>
+<div class="Content">
+    <div class="login-container">
+    <form class="login" method="POST" action="?pages=login">
+        <legend>SE CONNECTER</legend>
+        <input type="email" name="email" placeholder="E-mail" required>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        <button type="submit">Se connecter</button>
+        <p>je n'ai pas de compte? <a href="?pages=register">S'inscrire</a></p>
+    </form>
+    </div>
+</div>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,3 +31,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
+
+<style>
+
+.Content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+
+
+</style>
