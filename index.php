@@ -54,7 +54,7 @@
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<div class='message'>";
                         echo "<div class='title'>";
-                            echo "<a class='name' href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["publicName"] . "</a>";
+                            echo "<a class='name' href='?pages=otherProfile&user={$posts["user_id"]}'><strong>" . $posts["publicName"] . "</strong></a>";
                             echo "<p class='date'>" . $posts["date"] . "</p>";
                         echo "</div>";
                         echo "<p class='content'>" . $posts["content"] . "</p>";
