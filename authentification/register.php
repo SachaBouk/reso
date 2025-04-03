@@ -117,7 +117,6 @@ legend{
 input {
     width: 140%;
     padding: 10px;
-    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 72px;
     margin : 5px 0;
@@ -144,7 +143,7 @@ button {
     margin-top: 5px;
     cursor: pointer;
     border-radius: 5px;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 button:hover {
