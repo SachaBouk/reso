@@ -41,16 +41,62 @@
                 echo "<h1>Page non autorisée</h1>";
             }
         } else {
-            echo "<form action='' method='POST'>
-                        <input type='hidden' name='publication' value='1'>
-                        <input type='text' id='content' name='content' placeholder='Que se pastis ?' maxlength='100' required>
-                        <input type='submit' id='publish' value='Publier'>
-                    </form>";
             $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
             if (!$connexion) {
                 die("Connection failed: " . mysqli_connect_error());
-            } else {
-                // Trier les messages par post_id décroissant
+            }
+
+            // Si le formulaire est soumis
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if (isset($_POST['publication'])) {
+                    $content = $_POST['content'];
+                    $user_id = $_SESSION['users'];
+                    $postDate = date("Y-m-d H:i");
+
+                    // Insérer le post dans la base de données
+                    $result = mysqli_query($connexion, "INSERT INTO rs_post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
+
+                    if ($result) {
+                        // Récupérer les informations du post inséré
+                        $post_id = mysqli_insert_id($connexion);
+                        $userQuery = mysqli_query($connexion, "SELECT publicName FROM rs_users WHERE user_id = '$user_id'");
+                        $user = mysqli_fetch_assoc($userQuery);
+
+                        // Afficher le nouveau post directement
+                        echo "<div class='message'>";
+                        echo "<div class='title'>";
+                        echo "<a class='name' href='?pages=otherProfile&user={$user_id}'><strong>" . $user['publicName'] . "</strong></a>";
+                        echo "<p class='date'>" . $postDate . "</p>";
+                        echo "</div>";
+                        echo "<p class='content'>" . htmlspecialchars($content) . "</p>";
+                        echo "<a class='more' href='?pages=post&post={$post_id}'>Voir plus...</a>";
+                        echo "<form action='index.php' method='POST' style='display:inline;'>
+                                <input type='hidden' name='post_id' value='{$post_id}'>
+                                <input class='delete' type='submit' value='Supprimer'>
+                              </form>";
+                        echo "</div>";
+                    } else {
+                        echo "<p>Erreur lors de la publication du message.</p>";
+                    }
+                } elseif (isset($_POST['post_id'])) {
+                    $post_id = $_POST['post_id'];
+
+                    // Supprimer le post
+                    $result = mysqli_query($connexion, "DELETE FROM rs_post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
+                }
+            }
+        ?>
+            <!-- Formulaire de publication -->
+            <form action="" method="POST">
+                <input type="hidden" name="publication" value="1">
+                <input type="text" id="content" name="content" placeholder="Que se pastis ?" maxlength="100" required>
+                <input type="submit" id="publish" value="Publier">
+            </form>
+
+            <!-- Afficher les posts existants -->
+            <div id="postsContainer">
+                <?php
+                // Récupérer et afficher les posts existants
                 $request = mysqli_query($connexion, "SELECT rs_post.*, rs_users.publicName 
                                                      FROM rs_post 
                                                      JOIN rs_users ON rs_post.user_id = rs_users.user_id 
@@ -65,40 +111,18 @@
                     echo "<a class='more' href='?pages=post&post={$posts["post_id"]}'>Voir plus...</a>";
                     if ($_SESSION['users'] == $posts['user_id']) {
                         echo "<form action='index.php' method='POST' style='display:inline;'>
-                                        <input type='hidden' name='post_id' value='{$posts["post_id"]}'>
-                                        <input class='delete' type='submit' value='Supprimer'>
-                                    </form>";
+                                <input type='hidden' name='post_id' value='{$posts["post_id"]}'>
+                                <input class='delete' type='submit' value='Supprimer'>
+                              </form>";
                     }
                     echo "</div>";
                 }
-            }
+                ?>
+            </div>
+        <?php
         }
         ?>
     </main>
-    <?php
-    $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (!isset($_SESSION['last_submission']) || $_SESSION['last_submission'] !== $_POST) {
-            $_SESSION['last_submission'] = $_POST;
-
-            if (isset($_POST['publication'])) {
-                $content = $_POST['content'];
-                $user_id = $_SESSION['users'];
-                $postDate = date("Y-m-d H:i");
-
-                $result = mysqli_query($connexion, "INSERT INTO rs_post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
-            } elseif (isset($_POST['post_id'])) {
-                $post_id = $_POST['post_id'];
-
-                $result = mysqli_query($connexion, "DELETE FROM rs_post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
-            }
-
-            header("Location: " . $_SERVER['PHP_SELF']);
-            die();
-        }
-    }
-    ?>
 </body>
 
 </html>
