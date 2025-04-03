@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION['users'])) {
-    echo $_SESSION['users'];
+    return;
 } else {
     echo "Vous n'êtes pas connecter.";
 }
