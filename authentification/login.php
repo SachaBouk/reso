@@ -69,6 +69,7 @@ input {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin : 10px 0;
 }
 
 .input-group {
