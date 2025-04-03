@@ -43,7 +43,7 @@
         } else {
             echo "<form action='' method='POST'>
                         <input type='hidden' name='publication' value='1'>
-                        <input type='text' id='content' name='content' placeholder='Que se pastis ?' max='150' required>
+                        <input type='text' id='content' name='content' placeholder='Que se pastis ?' maxlength='150' required>
                         <input type='submit' id='publish' value='Publier'>
                     </form>";
             $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
