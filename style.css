@@ -93,9 +93,7 @@ body {
 #content {
     height: 5vh;
     width: 100%;
-    border-radius: 10px;
     padding: 10px;
-    border: 1px solid #676262;
 }
 
 #publish {
@@ -131,7 +129,7 @@ main {
     margin: 5px 0;
 }
 
-.content {
+.register-content {
     display: flex;
     justify-content: center;
     align-items: center;

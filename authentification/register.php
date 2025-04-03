@@ -1,4 +1,4 @@
-<div class="content">
+<div class="register-content">
     <div class="register-container">
         <h2>Créer un compte</h2>
 
