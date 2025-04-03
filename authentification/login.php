@@ -63,6 +63,14 @@ form{
     padding: 20px;
 }
 
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 
 
 </style>
