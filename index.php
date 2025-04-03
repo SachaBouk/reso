@@ -73,6 +73,7 @@
     </main>
     <?php
     $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['publication'])) {
             $content = $_POST['content'];
@@ -85,6 +86,9 @@
 
             $result = mysqli_query($connexion, "DELETE FROM rs_post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
         }
+
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
     }
     ?>
 </body>
