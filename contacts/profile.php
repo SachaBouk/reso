@@ -12,7 +12,7 @@ $query = "SELECT * FROM rs_users WHERE user_id = '$user_id'";
 $request = mysqli_query($connexion, $query);
 
 if ($user = mysqli_fetch_assoc($request)) {
-    echo "<div class='Content'>
+    echo "<div class='register-content'>
             <div class='register-container'>";
     echo "<br>Nom Public : <strong>" . htmlspecialchars($user["publicName"]) . "</strong>";
     echo "<br>Nom d'utilisateur : <strong>" . htmlspecialchars($user["username"]) . "</strong>";
