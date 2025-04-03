@@ -21,15 +21,7 @@
     <main>
 
         <?php
-        error_reporting(E_ALL);
-        ini_set('display_errors', 1);
-
         session_start();
-
-        // Générer un token unique si ce n'est pas déjà fait
-        if (!isset($_SESSION['form_token'])) {
-            $_SESSION['form_token'] = bin2hex(random_bytes(32));
-        }
 
         if (isset($_GET['pages'])) {
             $allowedPages = ['profile', 'login', 'logout', 'register', 'follower', 'follow', 'otherProfile', 'post'];
@@ -51,15 +43,18 @@
         } else {
             echo "<form action='' method='POST'>
                         <input type='hidden' name='publication' value='1'>
-                        <input type='hidden' name='form_token' value='" . $_SESSION['form_token'] . "'>
-                        <input type='text' id='content' name='content' placeholder='Que se pastis ?' required>
+                        <input type='text' id='content' name='content' placeholder='Que se pastis ?' maxlength='150' required>
                         <input type='submit' id='publish' value='Publier'>
                     </form>";
             $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
             if (!$connexion) {
                 die("Connection failed: " . mysqli_connect_error());
             } else {
-                $request = mysqli_query($connexion, "SELECT rs_post.*, rs_users.publicName FROM rs_post JOIN rs_users ON rs_post.user_id = rs_users.user_id");
+                // Trier les messages par post_id décroissant
+                $request = mysqli_query($connexion, "SELECT rs_post.*, rs_users.publicName 
+                                                     FROM rs_post 
+                                                     JOIN rs_users ON rs_post.user_id = rs_users.user_id 
+                                                     ORDER BY rs_post.post_id DESC");
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<div class='message'>";
                     echo "<div class='title'>";
@@ -84,10 +79,8 @@
     $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // Vérifier si le token est valide
-        if (isset($_POST['form_token']) && $_POST['form_token'] === $_SESSION['form_token']) {
-            // Réinitialiser le token pour éviter les soumissions multiples
-            unset($_SESSION['form_token']);
+        if (!isset($_SESSION['last_submission']) || $_SESSION['last_submission'] !== $_POST) {
+            $_SESSION['last_submission'] = $_POST;
 
             if (isset($_POST['publication'])) {
                 $content = $_POST['content'];
@@ -101,12 +94,8 @@
                 $result = mysqli_query($connexion, "DELETE FROM rs_post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
             }
 
-            // Redirection après traitement pour éviter le repost
             header("Location: " . $_SERVER['PHP_SELF']);
             die();
-        } else {
-            // Token invalide ou déjà utilisé
-            echo "Erreur : soumission invalide.";
         }
     }
     ?>
