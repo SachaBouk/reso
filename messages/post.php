@@ -23,8 +23,8 @@ if (!$connexion) {
 
 <form method="POST" action="">
     <input type="hidden" name="reply" value="reply">
-    <input type="text" name="replyContent" id="replyContent" placeholder="Write your reply">
-    <input type="submit" id="reply" value="Reply">
+    <input type="text" name="replyContent" id="replyContent" placeholder="Write your reply" required>
+    <input type="submit" name="replyButton" id="reply" value="Reply">
 </form>
 <?php
 $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
