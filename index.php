@@ -50,7 +50,11 @@
             if (!$connexion) {
                 die("Connection failed: " . mysqli_connect_error());
             } else {
-                $request = mysqli_query($connexion, "SELECT rs_post.*, rs_users.publicName FROM rs_post JOIN rs_users ON rs_post.user_id = rs_users.user_id");
+                // Trier les messages par post_id décroissant
+                $request = mysqli_query($connexion, "SELECT rs_post.*, rs_users.publicName 
+                                                     FROM rs_post 
+                                                     JOIN rs_users ON rs_post.user_id = rs_users.user_id 
+                                                     ORDER BY rs_post.post_id DESC");
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<div class='message'>";
                     echo "<div class='title'>";
