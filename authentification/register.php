@@ -98,7 +98,7 @@ form{
 }
 
 h2{
-    font-size: 1.9em;
+    font-size: 1.7em;
     margin-bottom: 20px;
     color: black;
     font-weight: bold;
