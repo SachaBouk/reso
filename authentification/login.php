@@ -71,6 +71,11 @@ input {
     border-radius: 5px;
 }
 
+.input-group {
+    margin: 10px 0;
+    text-align: left;
+}
+
 
 
 </style>
