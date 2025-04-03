@@ -2,7 +2,7 @@
 if (isset($_SESSION['users'])) {
     echo "";
 } else {
-    echo "Vous n'êtes pas connecter.";
+    echo "";
 }
 
 $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
