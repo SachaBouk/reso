@@ -76,7 +76,6 @@ mysqli_close($connection);
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: hidden;
     height: 90vh;
 }
 
