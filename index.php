@@ -50,11 +50,11 @@
                 echo "<h1>Page non autorisée</h1>";
             }
         } else {
-            $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
+            $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
             if (!$connexion) {
                 die("Connection failed: " . mysqli_connect_error());
             } else {
-                $request = mysqli_query($connexion, "SELECT * FROM post");
+                $request = mysqli_query($connexion, "SELECT * FROM rs_post");
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<div class='message'>";
                     echo $posts["content"] . " By : <a href='?pages=otherProfile&user={$posts["user_id"]}'>" . $posts["user_id"] . "</a>" . "<br>" . $posts["date"];
@@ -74,18 +74,18 @@
         ?>
     </main>
     <?php
-    $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
+    $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['publication'])) {
             $content = $_POST['content'];
             $user_id = $_SESSION['users'];
             $postDate = date("Y-m-d H:i");
 
-            $result = mysqli_query($connexion, "INSERT INTO post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
+            $result = mysqli_query($connexion, "INSERT INTO rs_post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
         } elseif (isset($_POST['post_id'])) {
             $post_id = $_POST['post_id'];
 
-            $result = mysqli_query($connexion, "DELETE FROM post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
+            $result = mysqli_query($connexion, "DELETE FROM rs_post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
         }
     }
     ?>

@@ -8,10 +8,10 @@ if (isset($_SESSION['users'])) {
 echo "<a href='?pages=follower'>followers</a>";
 echo "<a href='?pages=follow'>follows</a>";
 
-$connexion = mysqli_connect("localhost:25566","root","lecacaestcuit", "reso");
+$connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
 $user_id = mysqli_real_escape_string($connexion, $_SESSION['users']);
 
-$query = "SELECT * FROM users WHERE user_id = '$user_id'";
+$query = "SELECT * FROM rs_users WHERE user_id = '$user_id'";
 $request = mysqli_query($connexion, $query);
 
 if ($user = mysqli_fetch_assoc($request)) {

@@ -1,11 +1,11 @@
 <?php
 $post_id = $_GET["post"];
 
-$connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
+$connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
 if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
 } else {
-    $request = mysqli_query($connexion, "SELECT * FROM post WHERE post_id = '$post_id'");
+    $request = mysqli_query($connexion, "SELECT * FROM rs_post WHERE post_id = '$post_id'");
     while ($posts = mysqli_fetch_assoc($request)) {
         echo "<br><a href='?pages=otherProfile&user={$posts["user_id"]}'>".$posts["user_id"]."</a> says :";
         echo "<br>" . $posts["content"] . "<br>" . $posts["date"];
@@ -19,11 +19,11 @@ if (!$connexion) {
     <input type="submit" value="Reply">
 </form>
 <?php
-$connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
+$connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
 if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
 } else {
-    $request = mysqli_query($connexion, "SELECT * FROM reply WHERE post_id = '$post_id'");
+    $request = mysqli_query($connexion, "SELECT * FROM rs_reply WHERE post_id = '$post_id'");
     while ($posts = mysqli_fetch_assoc($request)) {
         echo "<br>";
         echo "<br><a href='?pages=otherProfile&user={$posts["user_id"]}'>".$posts["user_id"]."</a> Replied :";
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $post_id = $_GET["post"];
         $postDate = date("Y-m-d H:i");
 
-        $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
-        $result = mysqli_query($connexion, "INSERT INTO reply (content, user_id, post_id, date) VALUES ('$content', '$user_id','$post_id', '$postDate')");
+        $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
+        $result = mysqli_query($connexion, "INSERT INTO rs_reply (content, user_id, post_id, date) VALUES ('$content', '$user_id','$post_id', '$postDate')");
     }
 }
