@@ -23,7 +23,7 @@
         <form action="" method="POST">
             <input type="hidden" name="publication" value="1">
             <input type="text" id="content" name="content" placeholder="Que se pastis ?" required>
-            <input type="submit" value="Publier">
+            <input type="submit" id="publish" value="Publier">
         </form>
 
         <?php
@@ -89,3 +89,19 @@
 </body>
 
 </html>
+<style>
+    #content {
+        height: 5vh;
+        width: 100%;
+    }
+    #publish {
+        height: 5vh;
+        width: 10%;
+        background-color: black;
+        color: white;
+        border-radius: 16px;
+        border: 0;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+</style>
