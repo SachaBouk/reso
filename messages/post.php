@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = mysqli_query($connexion, "INSERT INTO rs_reply (content, user_id, post_id, date) VALUES ('$content', '$user_id','$post_id', '$postDate')");
 
         if ($result) {
-            header("Location: " . $_SERVER['PHP_SELF']);
+            header("Location: " . $_SERVER['REQUEST_URI']);
             exit();
         } else {
             echo "<p>Erreur lors de la publication du message.</p>";
