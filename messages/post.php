@@ -5,11 +5,18 @@ $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Camp
 if (!$connexion) {
     die("Connection failed: " . mysqli_connect_error());
 } else {
-    $request = mysqli_query($connexion, "SELECT * FROM rs_post WHERE post_id = '$post_id'
-                                                JOIN rs_users ON rs_post.user_id = rs_users.user_id");
+    $request = mysqli_query($connexion, "SELECT * FROM rs_post 
+                                                JOIN rs_users ON rs_post.user_id = rs_users.user_id
+                                                WHERE post_id = '$post_id'
+                                                ");
     while ($posts = mysqli_fetch_assoc($request)) {
-        echo "<br><a href='?pages=otherProfile&user={$posts["user_id"]}'>".$posts["publicName"]."</a> says :";
-        echo "<br>" . $posts["content"] . "<br>" . $posts["date"];
+        echo "<div class='message'>";
+        echo "<div class='title'>";
+        echo "<a class='name' href='?pages=otherProfile&user={$posts["user_id"]}'><strong>" . $posts["publicName"] . "</strong></a>";
+        echo "<p class='date'>" . $posts["date"] . "</p>";
+        echo "</div>";
+        echo "<p class='content'>" . $posts["content"] . "</p>";
+        echo "</div>";
     }
 }
 ?>
