@@ -36,7 +36,7 @@ if (!$connexion) {
                                                 WHERE post_id = '$post_id'");
     while ($posts = mysqli_fetch_assoc($request)) {
 
-        echo "<div class='message'>";
+        echo "<div class='messageReply'>";
         echo "<div class='title'>";
         echo "<a class='name' href='?pages=otherProfile&user={$posts["user_id"]}'><strong>" . $posts["publicName"] . "</strong></a>";
         echo "<p class='date'>" . $posts["date"] . "</p>";

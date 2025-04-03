@@ -170,3 +170,41 @@ main {
     width: 500px;
     font-size: 1.2em;
 }
+
+.messageReply {
+    width: 100%;
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: dimgrey;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.messageReply .content {
+    color: #fff;
+    margin: 15px 0;
+}
+
+.messageReply .date {
+    color: #505050;
+    text-decoration: none;
+}
+
+.messageReply .name strong {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.messageReply .more {
+    color: #ccc;
+    font-size: 0.9rem;
+    text-decoration: underline;
+}
+
+.messageReply .title {
+    display: flex;
+    gap: 5px;
+}
