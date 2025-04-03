@@ -28,10 +28,31 @@ body {
 }
 
 #barreLateral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 20%;
     background-color: #000;
     border-right: 1px solid #676262;
     color: #fff;
+    padding: 10px 0;
+}
+
+#barreLateral img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#barreLateral a {
+    text-decoration: none;
+    color: white;
+    margin: 10px 0;
+    transition: color 0.5s;
+}
+
+#barreLateral a:hover {
+    color: #646464;
 }
 
 main {
