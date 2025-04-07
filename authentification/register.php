@@ -29,7 +29,7 @@
     </div>
 </div>
 <?php
-$connection = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
+$connection = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
  
 if (!$connection) {
     die("Connexion impossible : " . mysqli_connect_error());
@@ -46,14 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $creationDate = date("Y-m-d");
  
     if ($password === $confirm_password) {
-        $query = "SELECT * FROM rs_users WHERE mail = '$mail'";
+        $query = "SELECT * FROM users WHERE mail = '$mail'";
         $result = mysqli_query($connection, $query);
  
         if (mysqli_num_rows($result) > 0) {
             echo "Cet email est déjà utilisé. Vous êtes peut-être déjà inscrit. <br>";
             echo '<a href="?pages=login"><button>Se connecter</button></a>';
         } else {
-            $query = "INSERT INTO rs_users (mail, name, lastName, username, publicName, password, creationDate) VALUES ('$mail', '$name', '$lastname', '$username', '$publicName', '$password', '$creationDate')";
+            $query = "INSERT INTO users (mail, name, lastName, username, publicName, password, creationDate) VALUES ('$mail', '$name', '$lastname', '$username', '$publicName', '$password', '$creationDate')";
  
             if (mysqli_query($connection, $query)) {
                 echo "Compte créé avec succès !";

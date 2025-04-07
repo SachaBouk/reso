@@ -28,7 +28,7 @@ session_start();
     <main>
 
         <?php
-        $connexion = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
+        $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
         if (!$connexion) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -37,9 +37,9 @@ session_start();
             if (isset($_POST['publication'])) {
                 $content = $_POST['content'];
                 $user_id = $_SESSION['users'];
-                $postDate = date("Y-m-d H:i");
+                $postDate = date("Y-m-d H:i:s");
 
-                $result = mysqli_query($connexion, "INSERT INTO rs_post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
+                $result = mysqli_query($connexion, "INSERT INTO post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
 
                 if ($result) {
                     header("Location: " . $_SERVER['PHP_SELF']);
@@ -50,7 +50,7 @@ session_start();
             } elseif (isset($_POST['post_id'])) {
                 $post_id = $_POST['post_id'];
 
-                $result = mysqli_query($connexion, "DELETE FROM rs_post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
+                $result = mysqli_query($connexion, "DELETE FROM post WHERE post_id = '$post_id' AND user_id = '$_SESSION[users]'");
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();
             }
@@ -83,10 +83,10 @@ session_start();
 
             <div id="postsContainer">
                 <?php
-                $request = mysqli_query($connexion, "SELECT rs_post.*, rs_users.publicName 
-                                                     FROM rs_post 
-                                                     JOIN rs_users ON rs_post.user_id = rs_users.user_id 
-                                                     ORDER BY rs_post.post_id DESC");
+                $request = mysqli_query($connexion, "SELECT post.*, users.publicName 
+                                                     FROM post 
+                                                     JOIN users ON post.user_id = users.user_id 
+                                                     ORDER BY post.post_id DESC");
                 while ($posts = mysqli_fetch_assoc($request)) {
                     echo "<div class='message'>";
                     echo "<div class='title'>";

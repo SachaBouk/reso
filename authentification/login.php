@@ -12,12 +12,12 @@
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $connection = mysqli_connect("gobeliparichert.mysql.db", "gobeliparichert", "Campusdigital74", "gobeliparichert");
+    $connection = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
 
     $email = $_POST['email'];
     $password = $_POST['password'];
     
-    $request = mysqli_query($connection, "SELECT * FROM rs_users WHERE mail = '$email'");
+    $request = mysqli_query($connection, "SELECT * FROM users WHERE mail = '$email'");
     if (mysqli_num_rows($request) > 0) {
         $user = mysqli_fetch_assoc($request);
         if ($password === $user['password']) {
