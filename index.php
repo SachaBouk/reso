@@ -93,7 +93,7 @@ session_start();
                     echo "<a class='name' href='?pages=otherProfile&user={$posts["user_id"]}'><strong>" . $posts["publicName"] . "</strong></a>";
                     echo "<p class='date'>" . $posts["date"] . "</p>";
                     echo "</div>";
-                    echo "<p class='content'>" . $posts["content"] . "</p>";
+                    echo "<p class='content'>" . htmlspecialchars($posts["content"]) . "</p>";
                     echo "<a class='more' href='?pages=post&post={$posts["post_id"]}'>Voir plus...</a>";
                     if ($_SESSION['users'] == $posts['user_id']) {
                         echo "<form action='index.php' method='POST' style='display:inline;'>

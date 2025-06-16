@@ -15,7 +15,7 @@ if (!$connexion) {
         echo "<a class='name' href='?pages=otherProfile&user={$posts["user_id"]}'><strong>" . $posts["publicName"] . "</strong></a>";
         echo "<p class='date'>" . $posts["date"] . "</p>";
         echo "</div>";
-        echo "<p class='content'>" . $posts["content"] . "</p>";
+        echo "<p class='content'>" . htmlspecialchars($posts["content"]) . "</p>";
         echo "</div>";
     }
 }
@@ -42,7 +42,7 @@ if (!$connexion) {
         echo "<a class='name' href='?pages=otherProfile&user={$posts["user_id"]}'><strong>" . $posts["publicName"] . "</strong></a>";
         echo "<p class='date'>" . $posts["date"] . "</p>";
         echo "</div>";
-        echo "<p class='content'>" . $posts["content"] . "</p>";
+        echo "<p class='content'>" . htmlspecialchars($posts["content"]) . "</p>";
         echo "</div>";
     }
 }
