@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $connection = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
 
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = hash("sha256", $_POST['password']);
     
     $request = mysqli_query($connection, "SELECT * FROM users WHERE mail = '$email'");
     if (mysqli_num_rows($request) > 0) {

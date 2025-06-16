@@ -41,8 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail = htmlspecialchars($_POST["mail"]);
     $username = htmlspecialchars($_POST["username"]);
     $publicName = htmlspecialchars($_POST["publicName"]);
-    $password = htmlspecialchars($_POST["password"]);
-    $confirm_password = htmlspecialchars($_POST["confirm_password"]);
+    $password = htmlspecialchars(hash("sha256", $_POST["password"]));
+    $confirm_password = htmlspecialchars(hash("sha256", $_POST["confirm_password"]));
     $creationDate = date("Y-m-d");
  
     if ($password === $confirm_password) {
