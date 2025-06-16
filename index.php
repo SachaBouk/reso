@@ -37,9 +37,8 @@ session_start();
             if (isset($_POST['publication'])) {
                 $content = $_POST['content'];
                 $user_id = $_SESSION['users'];
-                $postDate = date("Y-m-d H:i:s");
 
-                $result = mysqli_query($connexion, "INSERT INTO post (content, user_id, date) VALUES ('$content', '$user_id', '$postDate')");
+                $result = mysqli_query($connexion, "INSERT INTO post (content, user_id) VALUES ('$content', '$user_id')");
 
                 if ($result) {
                     header("Location: " . $_SERVER['PHP_SELF']);

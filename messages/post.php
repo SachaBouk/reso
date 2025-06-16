@@ -53,10 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $content = $_POST['replyContent'];
         $user_id = $_SESSION['users'];
         $post_id = $_GET["post"];
-        $postDate = date("Y-m-d H:i");
 
         $connexion = mysqli_connect("localhost:25566", "root", "lecacaestcuit", "reso");
-        $result = mysqli_query($connexion, "INSERT INTO reply (content, user_id, post_id, date) VALUES ('$content', '$user_id','$post_id', '$postDate')");
+        $result = mysqli_query($connexion, "INSERT INTO reply (content, user_id, post_id) VALUES ('$content', '$user_id','$post_id')");
 
         if ($result) {
             header("Location: " . $_SERVER['REQUEST_URI']);
