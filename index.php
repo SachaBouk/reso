@@ -56,14 +56,14 @@ session_start();
         }
 
         if (isset($_GET['pages'])) {
-            $allowedPages = ['profile', 'login', 'logout', 'register', 'follower', 'follow', 'otherProfile', 'post'];
+            $allowedPages = ['profile', 'login', 'logout', 'register', 'follower', 'follow', 'otherProfile', 'post', 'changePassword'];
             $page = $_GET['pages'];
 
             if (in_array($page, $allowedPages)) {
                 if ($page === "profile" || $page === "follower" || $page === "follow" || $page === "otherProfile") {
                     include("contacts/" . $page . '.php');
                 }
-                if ($page === "login" || $page === "logout" || $page === "register") {
+                if ($page === "login" || $page === "logout" || $page === "register" || $page === "changePassword") {
                     include("authentification/" . $page . '.php');
                 }
                 if ($page === "post") {

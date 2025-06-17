@@ -30,8 +30,6 @@ if (!$connection) {
 }
  
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $lastname = htmlspecialchars($_POST["lastName"]);
-    $name = htmlspecialchars($_POST["name"]);
     $mail = htmlspecialchars($_POST["mail"]);
     $username = htmlspecialchars($_POST["username"]);
     $publicName = htmlspecialchars($_POST["publicName"]);
@@ -47,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Cet email est déjà utilisé. Vous êtes peut-être déjà inscrit. <br>";
             echo '<a href="?pages=login"><button>Se connecter</button></a>';
         } else {
-            $query = "INSERT INTO users (mail, name, lastName, username, publicName, password, creationDate) VALUES ('$mail', '$name', '$lastname', '$username', '$publicName', '$password', '$creationDate')";
+            $query = "INSERT INTO users (mail, username, publicName, password, creationDate) VALUES ('$mail', '$username', '$publicName', '$password', '$creationDate')";
  
             if (mysqli_query($connection, $query)) {
                 echo "Compte créé avec succès !";
