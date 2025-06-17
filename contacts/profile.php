@@ -19,6 +19,7 @@ if ($user = mysqli_fetch_assoc($request)) {
     echo "<br>Date de création : <strong>" . htmlspecialchars($user["creationDate"]) . "</strong>";
     echo "<br>Followers : <strong>" . htmlspecialchars($user["followers"]) . "</strong>";
     echo "<br>Following : <strong>" . htmlspecialchars($user["following"]) . "</strong>";
+    echo "<a href='?pages=changePassword'>Changer le mot de passe</a>";
     echo "</div>
             </div>";
 

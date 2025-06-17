@@ -3,12 +3,6 @@
         <h2>Créer un compte</h2>
 
         <form action="" method="POST">
-            <label for="lastName">Nom :</label>
-            <input type="text" id="lastName" name="lastName" required>
-            <br>
-            <label for="name">Prénom :</label>
-            <input type="text" id="name" name="name" required>
-            <br>
             <label for="mail">Email :</label>
             <input type="email" id="mail" name="mail" required>
             <br>
